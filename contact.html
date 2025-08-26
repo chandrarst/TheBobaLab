@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="Images/Icon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
 
@@ -31,21 +32,21 @@
 
     <main class="page-content">
         <section class="contact-section">
-            <h2>Get In Touch</h2>
-            <p class="contact-slogan">We'd love to hear from you!</p>
+            <h2 data-aos="fade-down">Get In Touch</h2>
+            <p class="contact-slogan" data-aos="fade-down" data-aos-delay="100">We'd love to hear from you!</p>
             
             <div class="contact-info-form-container">
-                <div class="contact-info">
+                <div class="contact-info" data-aos="fade-right">
                     <h3>Our Details</h3>
                         <p><strong>Address:</strong> Jalan Boba No. 123, Kota Lab</p>
                         <p><strong>Phone:</strong> <a href="tel:+6281234567890">+62 812-3456-7890</a></p>
-                        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/thebobalab.id/" target="_blank">thebobalab.id</a></p>
+                        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/thebobalab.id/" target="_blank">@thebobalab.id</a></p>
                         <p><strong>Email:</strong> <a href="mailto:the.boba.lab.business@gmail.com">the.boba.lab.business@gmail.com</a></p>
-                        <p><strong>Youtube:</strong> <a href="https://www.youtube.com/your-channel-name" target="_blank">thebobalab.com</a></p>
+                        <p><strong>Youtube:</strong> <a href="https://www.youtube.com/channel/UC27TlRzDH-UD4I5ZlO7eDdw" target="_blank">@TheBobaLab</a></p>
                         <p><strong>Facebook:</strong> <a href="https://www.facebook.com/your-page-name" target="_blank">thebobalab.com</a></p>
                 </div>
 
-                <div class="contact-form">
+                <div class="contact-form" data-aos="fade-left">
                     <h3>Send Us A Message</h3>
                     <form action="#" method="post">
                         <label for="name">Your Name</label>
@@ -68,6 +69,10 @@
         <p>&copy; 2024 The Boba Lab. All rights reserved.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

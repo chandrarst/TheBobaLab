@@ -32,4 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
     hamburger.addEventListener("click", function() {
         nav.classList.toggle("active");
     });
+
+    // Tambahkan kelas .loaded ke body setelah halaman dimuat
+    document.body.classList.add("loaded");
 });
