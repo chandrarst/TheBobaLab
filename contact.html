@@ -21,45 +21,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - The Boba Lab</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>Contact - The Boba Lab</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="../assets/Images/Icon.ico">
+    <link rel="icon" type="image/x-icon" href="Images/Icon.ico">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
 
     <header>
         <div class="logo">
-            <a href="../home/" class="logo-link">
-                <img src="../assets/Images/Logo.webp" alt="Logo The Boba Lab">
+            <a href="index.html" class="logo-link">
+                <img src="Images/Logo.webp" alt="Logo The Boba Lab">
                 <span>The Boba Lab</span>
             </a>
         </div>
         <nav>
             <ul>
-                <li><a href="../home/">Home</a></li>
-                <li><a href=".">About Us</a></li>
-                <li><a href="../contact/">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
         <div class="hamburger">☰</div>
     </header>
 
     <main class="page-content">
-        <section class="about-section">
-            <h2 data-aos="fade-up">About The Boba Lab</h2>
-            <div class="about-container">
-                <div class="about-image" data-aos="fade-right">
-                    <img src="../assets/Images/AboutUs.webp" alt="Tim The Boba Lab sedang menyiapkan minuman">
+        <section class="contact-section">
+            <h2 data-aos="fade-down">Get In Touch</h2>
+            <p class="contact-slogan" data-aos="fade-down" data-aos-delay="100">We'd love to hear from you!</p>
+            
+            <div class="contact-info-form-container">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Our Details</h3>
+                        <p><strong>Address:</strong> Jalan Boba No. 123, Kota Lab</p>
+                        <p><strong>Phone:</strong> <a href="tel:+6281234567890">+62 812-3456-7890</a></p>
+                        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/thebobalab.id/" target="_blank">@thebobalab.id</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:the.boba.lab.business@gmail.com">the.boba.lab.business@gmail.com</a></p>
+                        <p><strong>Youtube:</strong> <a href="https://www.youtube.com/channel/UC27TlRzDH-UD4I5ZlO7eDdw" target="_blank">@TheBobaLab</a></p>
+                        <p><strong>Facebook:</strong> <a href="https://www.facebook.com/your-page-name" target="_blank">thebobalab.com</a></p>
                 </div>
-                <div class="about-text" data-aos="fade-left">
-                    <h3 data-aos="fade-left" data-aos-delay="200">Visi Kami: Inovasi Rasa di Boba Lab</h3>
-                    <p data-aos="fade-left" data-aos-delay="300">Di <b>Boba Lab</b>, kami adalah para pencipta, penjelajah rasa, dan penggemar boba sejati. Kami percaya bahwa boba bukanlah sekadar minuman, melainkan sebuah seni yang terus berkembang. Visi kami adalah menjadi pionir dalam dunia boba, menghadirkan inovasi dan kualitas tanpa kompromi.</p>
-                    <p data-aos="fade-left" data-aos-delay="400">Kami berkomitmen penuh pada keunggulan, mulai dari bahan baku hingga produk akhir. Setiap daun teh dipilih secara selektif, setiap susu dipertimbangkan dengan cermat, dan setiap boba pearl dibuat dengan presisi untuk mencapai tekstur yang sempurna. Kami terus-menerus bereksperimen dengan kombinasi rasa baru dan unik, menciptakan resep-resep orisinal yang tidak akan Anda temukan di tempat lain.</p>
-                    <p data-aos="fade-left" data-aos-delay="500">Kami berdedikasi untuk memberikan pengalaman terbaik kepada setiap pelanggan. Setiap gelas boba yang kami sajikan adalah bukti dari passion dan kerja keras kami. Kami ingin Boba Lab menjadi laboratorium ide-ide brilian yang menghasilkan minuman lezat dan berkesan. Mari bergabung dengan kami dan rasakan sendiri perbedaannya—rasakan inovasi dalam setiap tegukan!</p>
+
+                <div class="contact-form" data-aos="fade-left">
+                    <h3>Send Us A Message</h3>
+                    <form action="#" method="post">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+
+                        <button type="submit">Send Message</button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -75,6 +93,6 @@
     <script>
         AOS.init();
     </script>
-    <script src="../assets/js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
