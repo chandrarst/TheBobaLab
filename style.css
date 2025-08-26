@@ -1,0 +1,467 @@
+:root {
+    --primary-color: #6A4E39; /* Boba Brown */
+    --secondary-color: #F7D6B9; /* Creamy Boba */
+    --accent-color: #AF8B65; /* Lighter Brown */
+    --bg-color: #FDF9F6; /* Off-white */
+    --text-color: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Header & Nav --- */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo a {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: white;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.5em;
+    gap: 10px; /* jarak antara logo & teks */
+}
+
+.logo-link img {
+    height: 1.5em; /* tinggi logo sama dengan tinggi teks */
+    width: auto;   /* biar proporsional */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+nav li a:hover {
+    background-color: var(--accent-color);
+}
+
+/* --- Hamburger Menu --- */
+.hamburger {
+    display: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    color: white;
+}
+
+/* --- Main Content Layout --- */
+main.page-content {
+    padding: 50px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* --- Homepage Hero Slider --- */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.slides {
+    display: flex;
+    transition: transform 1.0s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 400px;
+    position: relative;
+    opacity: 1;
+    transition: none;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slide .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+.slide-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: white;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide-text.active {
+    opacity: 1;
+}
+
+.dots-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: var(--accent-color);
+}
+
+/* --- Menu Section --- */
+.menu-section h2 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding-bottom: 2rem;
+}
+
+.menu-item {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+}
+
+.menu-item img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.menu-item h3 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    margin: 15px 0 5px;
+}
+
+.menu-item p {
+    padding: 0 15px 15px;
+    text-align: center;
+    color: #666;
+}
+
+.menu-slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.menu-track {
+    display: flex;
+    width: calc(200%);
+    animation: scroll-left 20s linear infinite;
+}
+
+.menu-item {
+    flex: 0 0 300px;
+    margin: 0 15px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.menu-item img {
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+}
+
+/* Styling untuk semua link di dalam kelas contact-info */
+.contact-info a {
+  text-decoration: none; 
+  color: #6A4E39; 
+  outline: none; 
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #F7D6B9; 
+}
+
+.contact-info a:active {
+  color: #F7D6B9; 
+}
+
+@keyframes scroll-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- About & Contact Pages --- */
+.about-section, .contact-section {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.about-section h2, .contact-section h2 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.about-text {
+    flex: 2;
+}
+
+.contact-slogan {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.contact-info-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-info, .contact-form {
+    flex: 1;
+    min-width: 280px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+.contact-form button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: var(--accent-color);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 0.9em;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        gap: 10px;
+    }
+
+    nav ul li a {
+        background-color: var(--primary-color);
+        padding: 12px;
+        border-radius: 5px;
+    }
+
+    nav.active {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hero-slider, .slide {
+        height: 300px;
+    }
+
+    .slide-text h2 {
+        font-size: clamp(1em, 3vw, 2em);
+    }
+
+    .menu-track {
+        animation: none;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+
+    .menu-item {
+        flex: 0 0 20%;
+        margin: 0 10px;
+        scroll-snap-align: center;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-text, .contact-info {
+        text-align: center;
+    }
+
+    .contact-info-form-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .contact-info, .contact-form {
+        min-width: unset;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 15px;
+    }
+
+    nav li a {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+
+    .hero-slider, .slide {
+        height: 250px;
+    }
+
+    .slide-text h2 {
+        font-size: 0.7em;
+    }
+
+    .page-content {
+        padding: 30px 15px;
+    }
+
+    .about-section, .contact-section {
+        padding: 20px;
+    }
+
+
+}
