@@ -27,7 +27,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="Images/Icon.ico">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -40,7 +39,7 @@
   gtag('config', 'G-KFVXYQESC0');
 </script>
 
-<body>
+<body class="home-page">
 
     <header>
         <div class="logo">
@@ -52,6 +51,7 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
+                <li><a href="order.html">Order</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -59,97 +59,196 @@
         <div class="hamburger">☰</div>
     </header>
 
-    <main>
-        <section class="hero-slider">
-            <div class="slides">
-                <div class="slide active">
-                    <div class="overlay"></div>
-                    <img src="Images/Banner1.webp" alt="Gambar boba teh susu dengan boba pearls">
+    <main class="home-main">
+        <section class="hero-section">
+            <div class="hero-content" data-animate>
+                <p class="eyebrow">Lab Crafted Bubble Tea</p>
+                <h1>Temukan Laboratorium Rasa Boba Favoritmu</h1>
+                <p class="hero-copy">Setiap gelas kami diramu di dalam lab rasa untuk memastikan konsistensi dan pengalaman minum yang menakjubkan. Kamu bisa mengatur tingkat manis, topping, hingga tekstur boba sesuai selera.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="order.html">Pesan Sekarang</a>
+                    <a class="btn ghost" href="#menu-preview">Lihat Signature Menu</a>
                 </div>
-                <div class="slide">
-                    <div class="overlay"></div>
-                    <img src="Images/Banner2.webp" alt="Gambar tangan sedang menuang boba ke dalam cangkir">
-                </div>
-                <div class="slide">
-                    <div class="overlay"></div>
-                    <img src="Images/Banner3.webp" alt="Gambar teh susu boba dengan gelembung-gelembung di atasnya">
+                <div class="hero-stats">
+                    <div class="stat">
+                        <strong>12+</strong>
+                        <span>Signature drinks</span>
+                    </div>
+                    <div class="stat">
+                        <strong>24 Jam</strong>
+                        <span>Diproses fresh harian</span>
+                    </div>
+                    <div class="stat">
+                        <strong>5K+</strong>
+                        <span>Pelanggan puas</span>
+                    </div>
                 </div>
             </div>
-            <div class="slide-text active"><h2>Explore Our <br> Signature Boba</h2></div>
-            <div class="slide-text"><h2>Freshly Made, <br> Just For You</h2></div>
-            <div class="slide-text"><h2>The Perfect Blend <br> Every Single Time</h2></div>
+            <div class="hero-visual" data-animate>
+                <div class="hero-slider-shell">
+                    <section class="hero-slider">
+                        <div class="slides">
+                            <div class="slide active">
+                                <div class="overlay"></div>
+                                <img src="Images/Banner1.webp" alt="Gambar boba teh susu dengan boba pearls">
+                            </div>
+                            <div class="slide">
+                                <div class="overlay"></div>
+                                <img src="Images/Banner2.webp" alt="Gambar tangan sedang menuang boba ke dalam cangkir">
+                            </div>
+                            <div class="slide">
+                                <div class="overlay"></div>
+                                <img src="Images/Banner3.webp" alt="Gambar teh susu boba dengan gelembung-gelembung di atasnya">
+                            </div>
+                        </div>
+                        <div class="slide-text active"><h2>Explore Our <br> Signature Boba</h2></div>
+                        <div class="slide-text"><h2>Freshly Made, <br> Just For You</h2></div>
+                        <div class="slide-text"><h2>The Perfect Blend <br> Every Single Time</h2></div>
 
-            <div class="dots-container">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+                        <div class="dots-container">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </section>
+                </div>
+                <div class="hero-highlight">
+                    <h3>Signature Lab Series</h3>
+                    <p>Koleksi eksperimental kami yang digemari pelanggan setia untuk pengalaman boba kelas premium.</p>
+                    <a class="text-link" href="order.html">Lihat semua rasa</a>
+                </div>
             </div>
         </section>
 
-        <section class="menu-section">
-            <h2 data-aos="fade-up">Our Best-Selling Menus</h2>
-            <div class="menu-slider">
-                <div class="menu-track">
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="Images/BrownSugar.webp" alt="Brown Sugar Milk">
+        <section class="brand-pillars">
+            <div class="section-header" data-animate>
+                <p class="eyebrow">Kenapa Memilih Boba Lab</p>
+                <h2>Setiap Detail Dibuat Dengan Standar Laboratorium</h2>
+                <p>Kami membawa pendekatan ilmiah pada proses pembuatan boba agar setiap minuman memiliki kualitas konsisten, rasa yang seimbang, dan tampilan yang menggoda.</p>
+            </div>
+            <div class="pillars-grid">
+                <article class="pillar-card" data-animate style="--delay: .05s;">
+                    <span class="pillar-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="23" fill="#F7D6B9"/><path d="M16 24l5 5 11-11" stroke="#6A4E39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <h3>Bahan Pilihan</h3>
+                    <p>Susu segar, teh pilihan, dan boba homemade dimasak harian memastikan rasa yang selalu prima.</p>
+                </article>
+                <article class="pillar-card" data-animate style="--delay: .1s;">
+                    <span class="pillar-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="38" height="38" rx="12" fill="#E8C8A3"/><path d="M16 32h16M24 16v16" stroke="#6A4E39" stroke-width="3" stroke-linecap="round"/></svg>
+                    </span>
+                    <h3>Kustomisasi Total</h3>
+                    <p>Pilih kadar gula, level es, hingga topping favorit. Kamu yang menentukan eksperimennya.</p>
+                </article>
+                <article class="pillar-card" data-animate style="--delay: .15s;">
+                    <span class="pillar-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4l14 8v16c0 8.837-6.268 16-14 16s-14-7.163-14-16V12l14-8z" fill="#F0D8C2"/><path d="M20 20l4 4 8-8" stroke="#6A4E39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <h3>Pengemasan Aman</h3>
+                    <p>Setiap gelas disegel rapat dan dikirim cepat agar tiba di tanganmu tanpa kompromi.</p>
+                </article>
+                <article class="pillar-card" data-animate style="--delay: .2s;">
+                    <span class="pillar-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="30" r="10" fill="#EED5BC"/><circle cx="32" cy="18" r="10" fill="#F7D6B9"/><path d="M18 30l14-12" stroke="#6A4E39" stroke-width="3" stroke-linecap="round"/></svg>
+                    </span>
+                    <h3>Tim R&D Aktif</h3>
+                    <p>Menu baru bermunculan setiap musim dengan inspirasi rasa dari perjalanan kami ke Asia.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="signature-preview" id="menu-preview">
+            <div class="section-header" data-animate>
+                <p class="eyebrow">Signature Collection</p>
+                <h2>Favorit Sepanjang Tahun</h2>
+                <p>Empat menu terlaris yang selalu jadi pilihan pertama pelanggan kami. Semua bisa kamu pesan langsung dengan satu klik.</p>
+            </div>
+            <div class="preview-grid">
+                <article class="preview-card" data-animate style="--delay: .05s;">
+                    <img src="Images/BrownSugar.webp" alt="Brown Sugar Milk" loading="lazy">
+                    <div class="preview-card-body">
                         <h3>Brown Sugar Milk</h3>
-                        <p>Classic and creamy milk tea with chewy brown sugar boba pearls.</p>
+                        <p>Perpaduan susu creamy dengan sirup brown sugar karamel yang kental.</p>
+                        <div class="preview-meta">
+                            <span class="price-tag">Rp 28.000</span>
+                            <a class="text-link" href="order.html">Pesan varian ini</a>
+                        </div>
                     </div>
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="Images/Matcha.webp" alt="Matcha Lover">
+                </article>
+                <article class="preview-card" data-animate style="--delay: .1s;">
+                    <img src="Images/Matcha.webp" alt="Matcha Lover" loading="lazy">
+                    <div class="preview-card-body">
                         <h3>Matcha Lover</h3>
-                        <p>High-quality matcha tea with a rich, earthy flavor and tapioca pearls.</p>
+                        <p>Matcha Jepang premium dengan susu segar dan boba kenyal.</p>
+                        <div class="preview-meta">
+                            <span class="price-tag">Rp 30.000</span>
+                            <a class="text-link" href="order.html">Pesan varian ini</a>
+                        </div>
                     </div>
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="Images/Strawberry.webp" alt="Strawberry Cream">
+                </article>
+                <article class="preview-card" data-animate style="--delay: .15s;">
+                    <img src="Images/Strawberry.webp" alt="Strawberry Cream" loading="lazy">
+                    <div class="preview-card-body">
                         <h3>Strawberry Cream</h3>
-                        <p>A sweet and fruity blend with fresh strawberry essence and a creamy finish.</p>
+                        <p>Puree stroberi segar dengan lapisan whipped cream lembut.</p>
+                        <div class="preview-meta">
+                            <span class="price-tag">Rp 29.000</span>
+                            <a class="text-link" href="order.html">Pesan varian ini</a>
+                        </div>
                     </div>
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="Images/GreenMilk.webp" alt="Green Milk Tea">
+                </article>
+                <article class="preview-card" data-animate style="--delay: .2s;">
+                    <img src="Images/GreenMilk.webp" alt="Green Milk Tea" loading="lazy">
+                    <div class="preview-card-body">
                         <h3>Green Milk Tea</h3>
-                        <p>The rich cream of milk tea is coupled with a fragrant and delicate brew of green tea.</p>
+                        <p>Teh hijau wangi berpadu susu lembut, cocok untuk rasa klasik.</p>
+                        <div class="preview-meta">
+                            <span class="price-tag">Rp 25.000</span>
+                            <a class="text-link" href="order.html">Pesan varian ini</a>
+                        </div>
                     </div>
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="Images/BrownSugar.webp" alt="Brown Sugar Milk">
-                        <h3>Brown Sugar Milk</h3>
-                        <p>Classic and creamy milk tea with chewy brown sugar boba pearls.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="experience-section">
+            <div class="experience-layout">
+                <div class="experience-visual" data-animate>
+                    <img src="Images/AboutUs.webp" alt="Barista The Boba Lab sedang meracik minuman" loading="lazy">
+                    <div class="experience-badge">
+                        <strong>30 Menit</strong>
+                        <span>Rata-rata pengantaran</span>
                     </div>
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="600">
-                        <img src="Images/Matcha.webp" alt="Matcha Lover">
-                        <h3>Matcha Lover</h3>
-                        <p>High-quality matcha tea with a rich, earthy flavor and tapioca pearls.</p>
-                    </div>
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="700">
-                        <img src="Images/Strawberry.webp" alt="Strawberry Cream">
-                        <h3>Strawberry Cream</h3>
-                        <p>A sweet and fruity blend with fresh strawberry essence and a creamy finish.</p>
-                    </div>
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="800">
-                        <img src="Images/GreenMilk.webp" alt="Green Milk Tea">
-                        <h3>Green Milk Tea</h3>
-                        <p>The rich cream of milk tea is coupled with a fragrant and delicate brew of green tea.</p>
-                    </div>
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="900">
-                        <img src="Images/BrownSugar.webp" alt="Brown Sugar Milk">
-                        <h3>Brown Sugar Milk</h3>
-                        <p>Classic and creamy milk tea with chewy brown sugar boba pearls.</p>
-                    </div>
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="1000">
-                        <img src="Images/Matcha.webp" alt="Matcha Lover">
-                        <h3>Matcha Lover</h3>
-                        <p>High-quality matcha tea with a rich, earthy flavor and tapioca pearls.</p>
-                    </div>
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="1100">
-                        <img src="Images/Strawberry.webp" alt="Strawberry Cream">
-                        <h3>Strawberry Cream</h3>
-                        <p>A sweet and fruity blend with fresh strawberry essence and a creamy finish.</p>
-                    </div>
-                    <div class="menu-item" data-aos="zoom-in" data-aos-delay="1200">
-                        <img src="Images/GreenMilk.webp" alt="Green Milk Tea">
-                        <h3>Green Milk Tea</h3>
-                        <p>The rich cream of milk tea is coupled with a fragrant and delicate brew of green tea.</p>
-                    </div>
+                </div>
+                <div class="experience-steps" data-animate>
+                    <p class="eyebrow">Cara Pesan</p>
+                    <h2>Pesan Dalam 3 Langkah Sederhana</h2>
+                    <ol class="step-list">
+                        <li>
+                            <h3>Pilih Menu</h3>
+                            <p>Telusuri signature dan seasonal series kami. Setiap menu dilengkapi deskripsi dan rekomendasi pairing.</p>
+                        </li>
+                        <li>
+                            <h3>Atur Eksperimenmu</h3>
+                            <p>Tentukan tingkat manis, level es, hingga topping favorit. Sistem kami langsung menghitung total secara real time.</p>
+                        </li>
+                        <li>
+                            <h3>Nikmati Tanpa Menunggu</h3>
+                            <p>Kami siapkan minumanmu dalam hitungan menit dan kirim melalui kurir andalan kami.</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-banner">
+            <div class="cta-content" data-animate>
+                <h2>Siap Mengadakan Event atau Meeting?</h2>
+                <p>Kami menyediakan paket catering boba untuk kantor, pesta ulang tahun, hingga pop-up booth kampus. Hubungi kami dan tim akan bantu membuat racikan spesialmu.</p>
+                <div class="cta-actions">
+                    <a class="btn primary" href="order.html">Mulai Pesan</a>
+                    <a class="btn ghost" href="contact.html">Hubungi Tim Kami</a>
                 </div>
             </div>
         </section>
@@ -161,10 +260,6 @@
         <p><i>Universitas Multimedia Nusantara</i></p>
     </footer>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
     <script src="script.js"></script>
 </body>
 </html>

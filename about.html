@@ -27,7 +27,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="Images/Icon.ico">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -40,7 +39,7 @@
   gtag('config', 'G-KFVXYQESC0');
 </script>
 
-<body>
+<body class="about-page">
 
     <header>
         <div class="logo">
@@ -52,6 +51,7 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
+                <li><a href="order.html">Order</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -59,19 +59,114 @@
         <div class="hamburger">☰</div>
     </header>
 
-    <main class="page-content">
-        <section class="about-section">
-            <h2 data-aos="fade-up">About The Boba Lab</h2>
-            <div class="about-container">
-                <div class="about-image" data-aos="fade-right">
-                    <img src="Images/AboutUs.webp" alt="Tim The Boba Lab sedang menyiapkan minuman">
+    <main class="about-main">
+        <section class="page-hero about-hero">
+            <div class="hero-inner" data-animate>
+                <p class="eyebrow">Our Story</p>
+                <h1>Menjadikan Setiap Tegukan Sebuah Eksperimen Rasa</h1>
+                <p>Kami memulai perjalanan sebagai komunitas pecinta boba yang gemar mengutak-atik resep. Kini, laboratorium rasa kami menghadirkan minuman premium yang konsisten dan selalu segar.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="order.html">Cicipi Menu Kami</a>
+                    <a class="btn ghost" href="#timeline">Perjalanan Boba Lab</a>
                 </div>
-                <div class="about-text" data-aos="fade-left">
-                    <h3 data-aos="fade-left" data-aos-delay="200">Visi Kami: Inovasi Rasa di Boba Lab</h3>
-                    <p data-aos="fade-left" data-aos-delay="300">Di <b>Boba Lab</b>, kami adalah para pencipta, penjelajah rasa, dan penggemar boba sejati. Kami percaya bahwa boba bukanlah sekadar minuman, melainkan sebuah seni yang terus berkembang. Visi kami adalah menjadi pionir dalam dunia boba, menghadirkan inovasi dan kualitas tanpa kompromi.</p>
-                    <p data-aos="fade-left" data-aos-delay="400">Kami berkomitmen penuh pada keunggulan, mulai dari bahan baku hingga produk akhir. Setiap daun teh dipilih secara selektif, setiap susu dipertimbangkan dengan cermat, dan setiap boba pearl dibuat dengan presisi untuk mencapai tekstur yang sempurna. Kami terus-menerus bereksperimen dengan kombinasi rasa baru dan unik, menciptakan resep-resep orisinal yang tidak akan Anda temukan di tempat lain.</p>
-                    <p data-aos="fade-left" data-aos-delay="500">Kami berdedikasi untuk memberikan pengalaman terbaik kepada setiap pelanggan. Setiap gelas boba yang kami sajikan adalah bukti dari passion dan kerja keras kami. Kami ingin Boba Lab menjadi laboratorium ide-ide brilian yang menghasilkan minuman lezat dan berkesan. Mari bergabung dengan kami dan rasakan sendiri perbedaannya—rasakan inovasi dalam setiap tegukan!</p>
+            </div>
+        </section>
+
+        <section class="about-story">
+            <div class="story-layout">
+                <div class="story-text" data-animate>
+                    <h2>Riset Rasa Tanpa Henti</h2>
+                    <p>Setiap resep di The Boba Lab melalui proses eksperimen panjang. Tim R&D kami mencoba ratusan kombinasi bahan untuk mendapatkan rasa yang seimbang dan tahan disajikan dalam kondisi cuaca tropis Indonesia.</p>
+                    <ul class="story-highlights">
+                        <li>
+                            <strong>Laboratorium In-House</strong>
+                            <span>Semua sirup dan topping dibuat sendiri untuk menjaga kualitas.</span>
+                        </li>
+                        <li>
+                            <strong>Supplier Terpercaya</strong>
+                            <span>Kami bekerja sama dengan petani teh dan susu lokal untuk memastikan pasokan terbaik.</span>
+                        </li>
+                        <li>
+                            <strong>Tim Barista Terlatih</strong>
+                            <span>Setiap anggota tim menjalani pelatihan intensif sebelum menyajikan menu kepada pelanggan.</span>
+                        </li>
+                    </ul>
                 </div>
+                <div class="story-visual" data-animate>
+                    <img src="Images/AboutUs.webp" alt="Tim The Boba Lab sedang menyiapkan minuman" loading="lazy">
+                    <div class="story-badge">
+                        <strong>20+ Varian</strong>
+                        <span>Rilis rasa baru setiap kuartal</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline-section" id="timeline">
+            <div class="section-header" data-animate>
+                <p class="eyebrow">Timeline</p>
+                <h2>Perjalanan Inovasi Kami</h2>
+                <p>Dari pop-up kecil di kampus hingga membuka laboratorium rasa sendiri, berikut tonggak penting kami.</p>
+            </div>
+            <ol class="timeline">
+                <li data-animate style="--delay: .05s;">
+                    <span class="timeline-year">2019</span>
+                    <div class="timeline-card">
+                        <h3>Eksperimen Perdana</h3>
+                        <p>Memulai sebagai booth kecil dengan tiga menu utama dan fokus pada topping handmade.</p>
+                    </div>
+                </li>
+                <li data-animate style="--delay: .1s;">
+                    <span class="timeline-year">2020</span>
+                    <div class="timeline-card">
+                        <h3>Peluncuran Signature Series</h3>
+                        <p>Menambahkan varian Brown Sugar Milk dan Matcha Lover yang kini menjadi best seller.</p>
+                    </div>
+                </li>
+                <li data-animate style="--delay: .15s;">
+                    <span class="timeline-year">2022</span>
+                    <div class="timeline-card">
+                        <h3>Laboratorium Rasa</h3>
+                        <p>Membangun kitchen lab sendiri dan memperluas tim R&D untuk mengeksplor rasa regional.</p>
+                    </div>
+                </li>
+                <li data-animate style="--delay: .2s;">
+                    <span class="timeline-year">2024</span>
+                    <div class="timeline-card">
+                        <h3>Ekspansi Komunitas</h3>
+                        <p>Meluncurkan program kolaborasi bersama kreator kuliner dan menghadirkan kelas meracik boba.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="values-section">
+            <div class="section-header" data-animate>
+                <p class="eyebrow">Nilai Utama</p>
+                <h2>Budaya Kerja di The Boba Lab</h2>
+                <p>Kami memastikan seluruh tim bekerja dengan semangat eksplorasi dan kepedulian kepada pelanggan.</p>
+            </div>
+            <div class="values-grid">
+                <article class="value-card" data-animate style="--delay: .05s;">
+                    <h3>Rasa yang Jujur</h3>
+                    <p>Tidak ada perasa buatan yang berlebihan. Kami menjaga rasa tetap natural dan menonjolkan bahan utama.</p>
+                </article>
+                <article class="value-card" data-animate style="--delay: .1s;">
+                    <h3>Pelayanan Hangat</h3>
+                    <p>Kami percaya pengalaman pelanggan dimulai dari sapaan. Tim frontliner kami selalu siap membantu.</p>
+                </article>
+                <article class="value-card" data-animate style="--delay: .15s;">
+                    <h3>Eksperimen Berkelanjutan</h3>
+                    <p>Setiap ide baru diuji langsung dengan pelanggan komunitas kami sebelum dirilis resmi.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="team-invite">
+            <div class="team-content" data-animate>
+                <h2>Bergabung dalam Komunitas Riset Rasa</h2>
+                <p>Kami selalu mencari teman kolaborasi: dari petani lokal, food scientist, hingga konten kreator. Mari ciptakan inovasi rasa berikutnya bersama.</p>
+                <a class="btn ghost" href="contact.html">Hubungi Kami</a>
             </div>
         </section>
     </main>
@@ -82,10 +177,6 @@
         <p><i>Universitas Multimedia Nusantara</i></p>
     </footer>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
     <script src="script.js"></script>
 </body>
 </html>
