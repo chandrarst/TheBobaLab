@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
-    let slides = document.querySelectorAll(".hero-slider .slide");
-    let texts = document.querySelectorAll(".hero-slider .slide-text");
-    let dots = document.querySelectorAll(".dots-container .dot");
+    const slides = document.querySelectorAll(".hero-slider .slide");
+    const texts = document.querySelectorAll(".hero-slider .slide-text");
+    const dots = document.querySelectorAll(".dots-container .dot");
+    const slidesContainer = document.querySelector(".hero-slider .slides");
+    const hasSlider = slides.length > 0 && slidesContainer;
     let currentIndex = 0;
     const slideDuration = 3000; // 3 detik
 
@@ -10,12 +12,20 @@ document.addEventListener("DOMContentLoaded", function() {
         texts.forEach(text => text.classList.remove("active"));
         dots.forEach(dot => dot.classList.remove("active"));
 
-        slides[index].classList.add("active");
-        texts[index].classList.add("active");
-        dots[index].classList.add("active");
+        if (slides[index]) {
+            slides[index].classList.add("active");
+        }
+        if (texts[index]) {
+            texts[index].classList.add("active");
+        }
+        if (dots[index]) {
+            dots[index].classList.add("active");
+        }
 
-        let offset = -index * 100;
-        document.querySelector(".slides").style.transform = `translateX(${offset}%)`;
+        if (slidesContainer) {
+            const offset = -index * 100;
+            slidesContainer.style.transform = `translateX(${offset}%)`;
+        }
     }
 
     function nextSlide() {
@@ -23,7 +33,10 @@ document.addEventListener("DOMContentLoaded", function() {
         showSlide(currentIndex);
     }
 
-    setInterval(nextSlide, slideDuration);
+    if (hasSlider) {
+        showSlide(currentIndex);
+        setInterval(nextSlide, slideDuration);
+    }
 
     // Hamburger toggle
     const hamburger = document.querySelector(".hamburger");
