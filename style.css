@@ -1046,21 +1046,6 @@ body.home-page .slide-text {
     position: relative;
 }
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 32px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: rgba(175, 139, 101, 0.25);
-}
-
-.timeline li {
-    position: relative;
-    padding-left: 96px;
-}
-
 .timeline-year {
     position: absolute;
     left: 0;
@@ -1076,6 +1061,12 @@ body.home-page .slide-text {
     color: var(--primary-color);
     font-size: 1.1em;
     box-shadow: 0 12px 20px rgba(106, 78, 57, 0.12);
+    border: 1px solid rgba(175, 139, 101, 0.25);
+}
+
+.timeline li {
+    position: relative;
+    padding-left: 96px;
 }
 
 .timeline-card {
@@ -1398,6 +1389,7 @@ body.loaded.order-page .intro-visual {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    justify-content: center;
 }
 
 .intro-highlights .highlight {
@@ -1631,13 +1623,15 @@ body.order-page .menu-info {
     flex-direction: column;
     gap: 18px;
     flex: 1;
+    padding-top: 12px;
 }
 
 body.order-page .menu-info-header {
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: baseline;
     gap: 12px;
+    min-width: 2rem;
 }
 
 body.order-page .menu-info-header h3 {
@@ -1900,7 +1894,8 @@ body.loaded.order-page .cart-panel {
     border-radius: 14px;
     border: 1px solid rgba(106, 78, 57, 0.2);
     font-family: inherit;
-    max-width: none;
+    max-width: 100px;
+    font-size: 0.8rem;
 }
 
 .promo-input input:focus {
@@ -1917,6 +1912,7 @@ body.loaded.order-page .cart-panel {
     font-weight: 600;
     cursor: pointer;
     transition: background 0.3s ease;
+    font-size: 0.8rem;
 }
 
 .promo-input button:hover {
@@ -2060,7 +2056,8 @@ body.loaded.order-page .cart-panel {
     gap: 24px;
     padding: 32px;
     overflow-y: auto;
-    max-height: 90vh;
+    max-height: 80vh;
+    scrollbar-width: none;
 }
 
 .modal-close {
@@ -2267,6 +2264,12 @@ body.loaded.order-page .cart-panel {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    border-radius: 18px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: rgba(175, 139, 101, 0.08);
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 .modal-total {
