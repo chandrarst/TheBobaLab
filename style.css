@@ -476,11 +476,6 @@ main.page-content {
     box-shadow: 0 34px 56px rgba(106, 78, 57, 0.28);
 }
 
-body.home-page .hero-slider {
-    height: 460px;
-    border-radius: 32px;
-}
-
 body.home-page .slide-text {
     font-size: clamp(2rem, 4vw, 2.6rem);
 }
