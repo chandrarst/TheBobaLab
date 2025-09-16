@@ -43,6 +43,129 @@ body.loaded [data-animate] {
     transform: translateY(0);
 }
 
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, rgba(253, 249, 246, 0.98), rgba(247, 214, 185, 0.92));
+    z-index: 2400;
+    padding: 24px;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}
+
+body.loaded #loading-screen {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#loading-screen .loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+    max-width: 320px;
+}
+
+#loading-screen .loading-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+}
+
+#loading-screen .loading-logo img {
+    width: 64px;
+    height: 64px;
+}
+
+#loading-screen .loading-animation {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+#loading-screen .bubble {
+    width: 14px;
+    height: 14px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.85;
+    animation: bubbleFloat 1.2s ease-in-out infinite;
+}
+
+#loading-screen .bubble:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+#loading-screen .bubble:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+#loading-screen .loading-bar {
+    width: min(320px, 72vw);
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(106, 78, 57, 0.15);
+    overflow: hidden;
+    position: relative;
+}
+
+#loading-screen .loading-bar-fill {
+    position: absolute;
+    inset: 0;
+    width: 0%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: inherit;
+    transform-origin: left;
+    transition: width 0.3s ease;
+}
+
+#loading-screen .loading-text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: rgba(51, 51, 51, 0.8);
+}
+
+#loading-screen .loading-status {
+    display: inline-block;
+    min-width: 3ch;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-right: 4px;
+}
+
+@keyframes bubbleFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.85;
+    }
+    50% {
+        transform: translateY(-16px);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #loading-screen,
+    #loading-screen .loading-bar-fill {
+        transition-duration: 0s;
+    }
+
+    #loading-screen .bubble {
+        animation: none;
+    }
+}
+
 .btn {
     display: inline-flex;
     align-items: center;

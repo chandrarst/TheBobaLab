@@ -15,6 +15,76 @@ function prettifyTag(tag) {
         .replace(/\b\w/g, character => character.toUpperCase());
 }
 
+function initLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+
+    if (!loadingScreen) {
+        document.body.classList.add('loaded');
+        return null;
+    }
+
+    const progressBar = loadingScreen.querySelector('.loading-bar-fill');
+    const statusText = loadingScreen.querySelector('.loading-status');
+    let progress = 0;
+    let completed = false;
+
+    const updateProgress = value => {
+        const upperBound = completed ? 100 : 96;
+        const clampedValue = Math.min(value, upperBound);
+        progress = Math.max(progress, clampedValue);
+
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+        }
+
+        if (statusText) {
+            statusText.textContent = `${Math.round(progress)}%`;
+        }
+    };
+
+    const intervalId = window.setInterval(() => {
+        if (completed || progress >= 96) {
+            return;
+        }
+
+        const increment = Math.random() * 6 + 2;
+        updateProgress(progress + increment);
+    }, 180);
+
+    const finalize = () => {
+        if (completed) {
+            return;
+        }
+
+        completed = true;
+        window.clearInterval(intervalId);
+        updateProgress(100);
+        loadingScreen.setAttribute('aria-hidden', 'true');
+        document.body.classList.add('loaded');
+
+        window.setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 520);
+    };
+
+    if (document.readyState === 'complete') {
+        window.setTimeout(finalize, 0);
+    } else {
+        window.addEventListener('load', finalize, { once: true });
+    }
+
+    return {
+        advance(amount = 18) {
+            if (completed) {
+                return;
+            }
+
+            updateProgress(progress + amount);
+        },
+        complete: finalize
+    };
+}
+
 function initSlider() {
     const slider = document.querySelector('.hero-slider');
     if (!slider) {
@@ -977,6 +1047,18 @@ function initOrderExperience() {
     updateCartUI();
 }
 
+function registerServiceWorker() {
+    if (!('serviceWorker' in navigator)) {
+        return;
+    }
+
+    navigator.serviceWorker.register('service-worker.js').catch(error => {
+        console.warn('Service worker registration failed:', error);
+    });
+}
+
+const loadingController = initLoadingScreen();
+
 document.addEventListener('DOMContentLoaded', () => {
     initSlider();
     initNavigation();
@@ -986,5 +1068,9 @@ document.addEventListener('DOMContentLoaded', () => {
         initOrderExperience();
     }
 
-    document.body.classList.add('loaded');
+    if (loadingController) {
+        loadingController.advance(28);
+    }
+
+    registerServiceWorker();
 });
