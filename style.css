@@ -705,7 +705,7 @@ body.home-page .slide-text {
 
 .preview-card img {
     width: 100%;
-    height: 100%;
+    height: 450px;
     object-fit: cover;
 }
 
@@ -2500,7 +2500,7 @@ body.loaded.order-page .cart-panel {
     left: 50%;
     bottom: 32px;
     transform: translate(-50%, 120%);
-    background: rgba(33, 24, 18, 0.92);
+    background: rgba(33, 18, 28, 0.92);
     color: #fff;
     padding: 12px 22px;
     border-radius: 999px;
@@ -2532,11 +2532,15 @@ footer {
         padding: 16px 20px;
         gap: 16px;
         position: relative;
+        display: flex;
+        align-items: center;
     }
 
     .nav-toggle {
         display: inline-flex;
-    }
+        margin-left: auto;
+        margin-right: 1rem;
+    }   
 
     .main-nav {
         position: absolute;
@@ -2591,7 +2595,7 @@ footer {
     }
 
     .nav-list a {
-        width: 100%;
+        width: 90%;
         justify-content: flex-start;
         padding: 14px 18px;
     }
@@ -2679,6 +2683,14 @@ footer {
     .cart-count {
         width: auto;
         padding: 6px 12px;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .text-link {
+        justify-content: center;
     }
 }
 
@@ -2908,6 +2920,26 @@ footer {
     .toast {
         bottom: 24px;
     }
+
+    body.order-page .menu-meta {
+        display: block;
+    }
+
+    body.order-page .add-btn {
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+
+    body.order-page .menu-info-header {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+        margin-left: auto;
+        margin-right: 0.6rem;
+    }   
+
 }
 @media (max-width: 480px) {
     .header-inner {
@@ -3080,4 +3112,31 @@ footer {
     .toast {
         bottom: 18px;
     }
+
+    .nav-toggle {
+        display: inline-flex;
+        margin-left: auto;
+        margin-right: 0.5rem;
+    }   
+
+    .nav-list a {
+        width: 85%;
+    }
+
+    body.order-page .menu-info-header {
+        padding-top: 15px;
+    }
+
+    body.order-page .add-btn {
+        font-size: 1rem;
+    }
+
+    body.order-page .menu-price {
+        font-size: 1.1rem;
+    }
+
+    .toast {
+        font-size: 0.8rem;
+    }
+
 }
