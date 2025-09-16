@@ -1,27 +1,27 @@
 const CACHE_NAME = 'boba-lab-cache-v1';
 const OFFLINE_ASSETS = [
-    '/',
-    '/index.html',
-    '/about.html',
-    '/contact.html',
-    '/order.html',
-    '/style.css',
-    '/script.js',
-    '/Images/AboutUs.webp',
-    '/Images/Banner1.webp',
-    '/Images/Banner2.webp',
-    '/Images/Banner3.webp',
-    '/Images/BrownSugar.webp',
-    '/Images/Caramel.webp',
-    '/Images/GreenMilk.webp',
-    '/Images/Houjicha.webp',
-    '/Images/Icon.ico',
-    '/Images/Logo.webp',
-    '/Images/Lychee.webp',
-    '/Images/Mango.webp',
-    '/Images/Matcha.webp',
-    '/Images/Strawberry.webp',
-    '/Images/Taro.webp'
+    './',
+    './index.html',
+    './about.html',
+    './contact.html',
+    './order.html',
+    './style.css',
+    './script.js',
+    './Images/AboutUs.webp',
+    './Images/Banner1.webp',
+    './Images/Banner2.webp',
+    './Images/Banner3.webp',
+    './Images/BrownSugar.webp',
+    './Images/Caramel.webp',
+    './Images/GreenMilk.webp',
+    './Images/Houjicha.webp',
+    './Images/Icon.ico',
+    './Images/Logo.webp',
+    './Images/Lychee.webp',
+    './Images/Mango.webp',
+    './Images/Matcha.webp',
+    './Images/Strawberry.webp',
+    './Images/Taro.webp'
 ];
 
 self.addEventListener('install', event => {
@@ -72,7 +72,7 @@ self.addEventListener('fetch', event => {
                 })
                 .catch(error => {
                     if (event.request.mode === 'navigate') {
-                        return caches.match('/index.html');
+                        return caches.match('./index.html');
                     }
 
                     throw error;
