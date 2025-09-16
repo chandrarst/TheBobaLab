@@ -1053,7 +1053,7 @@ body.home-page .slide-text {
 }
 
 .contact-hero {
-    background: white;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(247, 214, 185, 0.55));
     border-radius: 40px;
     padding: 80px 70px;
     box-shadow: 0 28px 48px rgba(106, 78, 57, 0.16);
