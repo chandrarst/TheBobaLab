@@ -127,7 +127,6 @@ function createCartItemElement(item) {
             </div>
             <span class="item-price">${formatCurrency(item.price * item.quantity)}</span>
         </div>
-        <button type="button" class="remove-item" data-action="remove" data-key="${item.key}" aria-label="Hapus ${item.name} dari keranjang">✕</button>
     `;
 
     return listItem;
