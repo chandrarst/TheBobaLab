@@ -41,22 +41,30 @@
 
 <body class="order-page">
 
-    <header>
-        <div class="logo">
-            <a href="index.html" class="logo-link">
-                <img src="Images/Logo.webp" alt="Logo The Boba Lab">
-                <span>The Boba Lab</span>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="brand" aria-label="Beranda The Boba Lab">
+                <img src="Images/Logo.webp" alt="Logo The Boba Lab" class="brand-logo">
+                <span class="brand-text">
+                    <span class="brand-name">The Boba Lab</span>
+                    <span class="brand-tagline">Lab Crafted Bubble Tea</span>
+                </span>
             </a>
+            <nav class="main-nav" id="primary-navigation" aria-label="Navigasi utama">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="sr-only">Buka navigasi</span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="order.html" class="active">Order</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="hamburger">☰</div>
     </header>
 
     <main class="order-main">
@@ -104,7 +112,7 @@
                     </div>
                 </div>
                 <div class="menu-grid">
-                    <article class="menu-card" data-id="brown-sugar" data-name="Brown Sugar Milk" data-price="28000" data-tags="signature,classic" style="--delay: .35s;">
+                    <article class="menu-card" data-id="brown-sugar" data-name="Brown Sugar Milk" data-price="28000" data-tags="signature,classic" data-ice-options="Normal Ice|Less Ice|No Ice" data-sweetness-options="Normal Sugar|Less Sugar|Half Sugar" data-topping-options="Tanpa Tambahan|Extra Boba|Cheese Foam|Grass Jelly" data-default-ice="Normal Ice" data-default-sweetness="Normal Sugar" data-default-topping="Tanpa Tambahan" data-image="Images/BrownSugar.webp" style="--delay: .35s;">
                         <div class="menu-image">
                             <img src="Images/BrownSugar.webp" alt="Brown Sugar Milk">
                             <span class="menu-badge bestseller">Best Seller</span>
@@ -115,41 +123,20 @@
                                 <span class="menu-volume">500 ml</span>
                             </div>
                             <p>Creamy fresh milk dengan sirup brown sugar yang dimasak perlahan hingga karamel sempurna.</p>
-                            <div class="menu-options">
-                                <label>
-                                    <span>Level Es</span>
-                                    <select name="ice">
-                                        <option value="Normal Ice" selected>Normal Ice</option>
-                                        <option value="Less Ice">Less Ice</option>
-                                        <option value="No Ice">No Ice</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Kemanisan</span>
-                                    <select name="sweetness">
-                                        <option value="Normal Sugar" selected>Normal Sugar</option>
-                                        <option value="Less Sugar">Less Sugar</option>
-                                        <option value="Half Sugar">Half Sugar</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Topping</span>
-                                    <select name="topping">
-                                        <option value="Tanpa Tambahan" selected>Tanpa Tambahan</option>
-                                        <option value="Extra Boba">Extra Boba</option>
-                                        <option value="Cheese Foam">Cheese Foam</option>
-                                        <option value="Grass Jelly">Grass Jelly</option>
-                                    </select>
-                                </label>
+                            <div class="menu-flags" data-taglist></div>
+                            <div class="menu-attributes" aria-label="Kustomisasi tersedia">
                             </div>
                             <div class="menu-meta">
-                                <span class="price" data-price-display>Rp 28.000</span>
-                                <button type="button" class="add-btn">Tambah</button>
+                                <div class="menu-price">
+                                    <span>Mulai dari</span>
+                                    <strong data-price-display>Rp 28.000</strong>
+                                </div>
+                                <button type="button" class="add-btn">Sesuaikan &amp; Tambah</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="menu-card" data-id="matcha-lover" data-name="Matcha Lover" data-price="30000" data-tags="signature,tea" style="--delay: .4s;">
+                    <article class="menu-card" data-id="matcha-lover" data-name="Matcha Lover" data-price="30000" data-tags="signature,tea" data-ice-options="Normal Ice|Less Ice|No Ice" data-sweetness-options="Normal Sugar|Less Sugar|Half Sugar" data-topping-options="Tanpa Tambahan|Extra Boba|Cheese Foam|Red Bean" data-default-ice="Normal Ice" data-default-sweetness="Normal Sugar" data-default-topping="Tanpa Tambahan" data-image="Images/Matcha.webp" style="--delay: .4s;">
                         <div class="menu-image">
                             <img src="Images/Matcha.webp" alt="Matcha Lover">
                             <span class="menu-badge">New</span>
@@ -160,41 +147,20 @@
                                 <span class="menu-volume">450 ml</span>
                             </div>
                             <p>Matcha Jepang premium dengan susu segar dan boba kenyal yang menambah tekstur.</p>
-                            <div class="menu-options">
-                                <label>
-                                    <span>Level Es</span>
-                                    <select name="ice">
-                                        <option value="Normal Ice" selected>Normal Ice</option>
-                                        <option value="Less Ice">Less Ice</option>
-                                        <option value="No Ice">No Ice</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Kemanisan</span>
-                                    <select name="sweetness">
-                                        <option value="Normal Sugar" selected>Normal Sugar</option>
-                                        <option value="Less Sugar">Less Sugar</option>
-                                        <option value="Half Sugar">Half Sugar</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Topping</span>
-                                    <select name="topping">
-                                        <option value="Tanpa Tambahan" selected>Tanpa Tambahan</option>
-                                        <option value="Extra Boba">Extra Boba</option>
-                                        <option value="Cheese Foam">Cheese Foam</option>
-                                        <option value="Red Bean">Red Bean</option>
-                                    </select>
-                                </label>
+                            <div class="menu-flags" data-taglist></div>
+                            <div class="menu-attributes" aria-label="Kustomisasi tersedia">
                             </div>
                             <div class="menu-meta">
-                                <span class="price" data-price-display>Rp 30.000</span>
-                                <button type="button" class="add-btn">Tambah</button>
+                                <div class="menu-price">
+                                    <span>Mulai dari</span>
+                                    <strong data-price-display>Rp 30.000</strong>
+                                </div>
+                                <button type="button" class="add-btn">Sesuaikan &amp; Tambah</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="menu-card" data-id="strawberry-cream" data-name="Strawberry Cream" data-price="29000" data-tags="seasonal,fruit" style="--delay: .45s;">
+                    <article class="menu-card" data-id="strawberry-cream" data-name="Strawberry Cream" data-price="29000" data-tags="seasonal,fruit" data-ice-options="Normal Ice|Less Ice|No Ice" data-sweetness-options="Normal Sugar|Less Sugar|Half Sugar" data-topping-options="Tanpa Tambahan|Cheese Foam|Strawberry Jelly|Crumble" data-default-ice="Normal Ice" data-default-sweetness="Normal Sugar" data-default-topping="Tanpa Tambahan" data-image="Images/Strawberry.webp" style="--delay: .45s;">
                         <div class="menu-image">
                             <img src="Images/Strawberry.webp" alt="Strawberry Cream">
                         </div>
@@ -204,41 +170,20 @@
                                 <span class="menu-volume">450 ml</span>
                             </div>
                             <p>Puree stroberi segar dan whipped cream lembut menciptakan sensasi manis menyegarkan.</p>
-                            <div class="menu-options">
-                                <label>
-                                    <span>Level Es</span>
-                                    <select name="ice">
-                                        <option value="Normal Ice" selected>Normal Ice</option>
-                                        <option value="Less Ice">Less Ice</option>
-                                        <option value="No Ice">No Ice</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Kemanisan</span>
-                                    <select name="sweetness">
-                                        <option value="Normal Sugar" selected>Normal Sugar</option>
-                                        <option value="Less Sugar">Less Sugar</option>
-                                        <option value="Half Sugar">Half Sugar</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Topping</span>
-                                    <select name="topping">
-                                        <option value="Tanpa Tambahan" selected>Tanpa Tambahan</option>
-                                        <option value="Cheese Foam">Cheese Foam</option>
-                                        <option value="Strawberry Jelly">Strawberry Jelly</option>
-                                        <option value="Crumble">Crumble</option>
-                                    </select>
-                                </label>
+                            <div class="menu-flags" data-taglist></div>
+                            <div class="menu-attributes" aria-label="Kustomisasi tersedia">
                             </div>
                             <div class="menu-meta">
-                                <span class="price" data-price-display>Rp 29.000</span>
-                                <button type="button" class="add-btn">Tambah</button>
+                                <div class="menu-price">
+                                    <span>Mulai dari</span>
+                                    <strong data-price-display>Rp 29.000</strong>
+                                </div>
+                                <button type="button" class="add-btn">Sesuaikan &amp; Tambah</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="menu-card" data-id="green-milk-tea" data-name="Green Milk Tea" data-price="25000" data-tags="tea,classic" style="--delay: .5s;">
+                    <article class="menu-card" data-id="green-milk-tea" data-name="Green Milk Tea" data-price="25000" data-tags="tea,classic" data-ice-options="Normal Ice|Less Ice|No Ice" data-sweetness-options="Normal Sugar|Less Sugar|Half Sugar" data-topping-options="Tanpa Tambahan|Crystal Boba|Grass Jelly|Pudding" data-default-ice="Normal Ice" data-default-sweetness="Normal Sugar" data-default-topping="Tanpa Tambahan" data-image="Images/GreenMilk.webp" style="--delay: .5s;">
                         <div class="menu-image">
                             <img src="Images/GreenMilk.webp" alt="Green Milk Tea">
                         </div>
@@ -248,43 +193,22 @@
                                 <span class="menu-volume">500 ml</span>
                             </div>
                             <p>Teh hijau wangi dengan susu creamy yang cocok untuk kamu pencinta rasa klasik.</p>
-                            <div class="menu-options">
-                                <label>
-                                    <span>Level Es</span>
-                                    <select name="ice">
-                                        <option value="Normal Ice" selected>Normal Ice</option>
-                                        <option value="Less Ice">Less Ice</option>
-                                        <option value="No Ice">No Ice</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Kemanisan</span>
-                                    <select name="sweetness">
-                                        <option value="Normal Sugar" selected>Normal Sugar</option>
-                                        <option value="Less Sugar">Less Sugar</option>
-                                        <option value="Half Sugar">Half Sugar</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Topping</span>
-                                    <select name="topping">
-                                        <option value="Tanpa Tambahan" selected>Tanpa Tambahan</option>
-                                        <option value="Crystal Boba">Crystal Boba</option>
-                                        <option value="Grass Jelly">Grass Jelly</option>
-                                        <option value="Pudding">Pudding</option>
-                                    </select>
-                                </label>
+                            <div class="menu-flags" data-taglist></div>
+                            <div class="menu-attributes" aria-label="Kustomisasi tersedia">
                             </div>
                             <div class="menu-meta">
-                                <span class="price" data-price-display>Rp 25.000</span>
-                                <button type="button" class="add-btn">Tambah</button>
+                                <div class="menu-price">
+                                    <span>Mulai dari</span>
+                                    <strong data-price-display>Rp 25.000</strong>
+                                </div>
+                                <button type="button" class="add-btn">Sesuaikan &amp; Tambah</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="menu-card" data-id="caramel-coffee" data-name="Caramel Coffee Boba" data-price="32000" data-tags="coffee,signature" style="--delay: .55s;">
+                    <article class="menu-card" data-id="caramel-coffee" data-name="Caramel Coffee Boba" data-price="32000" data-tags="coffee,signature" data-ice-options="Normal Ice|Less Ice|No Ice" data-sweetness-options="Normal Sugar|Less Sugar|Half Sugar" data-topping-options="Tanpa Tambahan|Coffee Jelly|Biscoff Crumble|Sea Salt Foam" data-default-ice="Normal Ice" data-default-sweetness="Normal Sugar" data-default-topping="Tanpa Tambahan" data-image="Images/BrownSugar.webp" style="--delay: .55s;">
                         <div class="menu-image">
-                            <img src="Images/BrownSugar.webp" alt="Caramel Coffee Boba">
+                            <img src="Images/Caramel.webp" alt="Caramel Coffee Boba">
                         </div>
                         <div class="menu-info">
                             <div class="menu-info-header">
@@ -292,43 +216,22 @@
                                 <span class="menu-volume">480 ml</span>
                             </div>
                             <p>Espresso bold dengan saus karamel dan sentuhan krim yang menyeimbangkan rasa pahit manis.</p>
-                            <div class="menu-options">
-                                <label>
-                                    <span>Level Es</span>
-                                    <select name="ice">
-                                        <option value="Normal Ice" selected>Normal Ice</option>
-                                        <option value="Less Ice">Less Ice</option>
-                                        <option value="No Ice">No Ice</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Kemanisan</span>
-                                    <select name="sweetness">
-                                        <option value="Normal Sugar" selected>Normal Sugar</option>
-                                        <option value="Less Sugar">Less Sugar</option>
-                                        <option value="Half Sugar">Half Sugar</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Topping</span>
-                                    <select name="topping">
-                                        <option value="Tanpa Tambahan" selected>Tanpa Tambahan</option>
-                                        <option value="Coffee Jelly">Coffee Jelly</option>
-                                        <option value="Biscoff Crumble">Biscoff Crumble</option>
-                                        <option value="Sea Salt Foam">Sea Salt Foam</option>
-                                    </select>
-                                </label>
+                            <div class="menu-flags" data-taglist></div>
+                            <div class="menu-attributes" aria-label="Kustomisasi tersedia">
                             </div>
                             <div class="menu-meta">
-                                <span class="price" data-price-display>Rp 32.000</span>
-                                <button type="button" class="add-btn">Tambah</button>
+                                <div class="menu-price">
+                                    <span>Mulai dari</span>
+                                    <strong data-price-display>Rp 32.000</strong>
+                                </div>
+                                <button type="button" class="add-btn">Sesuaikan &amp; Tambah</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="menu-card" data-id="houjicha-latte" data-name="Houjicha Latte" data-price="31000" data-tags="tea,seasonal" style="--delay: .6s;">
+                    <article class="menu-card" data-id="houjicha-latte" data-name="Houjicha Latte" data-price="31000" data-tags="tea,seasonal" data-ice-options="Normal Ice|Less Ice|No Ice" data-sweetness-options="Normal Sugar|Less Sugar|Half Sugar" data-topping-options="Tanpa Tambahan|Brown Sugar Pearls|Soy Foam|Kinako Powder" data-default-ice="Normal Ice" data-default-sweetness="Normal Sugar" data-default-topping="Tanpa Tambahan" data-image="Images/Matcha.webp" style="--delay: .6s;">
                         <div class="menu-image">
-                            <img src="Images/Matcha.webp" alt="Houjicha Latte">
+                            <img src="Images/Houjicha.webp" alt="Houjicha Latte">
                         </div>
                         <div class="menu-info">
                             <div class="menu-info-header">
@@ -336,43 +239,22 @@
                                 <span class="menu-volume">480 ml</span>
                             </div>
                             <p>Roasted tea khas Jepang dengan aroma smokey yang berpadu lembut dengan susu oat.</p>
-                            <div class="menu-options">
-                                <label>
-                                    <span>Level Es</span>
-                                    <select name="ice">
-                                        <option value="Normal Ice" selected>Normal Ice</option>
-                                        <option value="Less Ice">Less Ice</option>
-                                        <option value="No Ice">No Ice</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Kemanisan</span>
-                                    <select name="sweetness">
-                                        <option value="Normal Sugar" selected>Normal Sugar</option>
-                                        <option value="Less Sugar">Less Sugar</option>
-                                        <option value="Half Sugar">Half Sugar</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Topping</span>
-                                    <select name="topping">
-                                        <option value="Tanpa Tambahan" selected>Tanpa Tambahan</option>
-                                        <option value="Brown Sugar Pearls">Brown Sugar Pearls</option>
-                                        <option value="Soy Foam">Soy Foam</option>
-                                        <option value="Kinako Powder">Kinako Powder</option>
-                                    </select>
-                                </label>
+                            <div class="menu-flags" data-taglist></div>
+                            <div class="menu-attributes" aria-label="Kustomisasi tersedia">
                             </div>
                             <div class="menu-meta">
-                                <span class="price" data-price-display>Rp 31.000</span>
-                                <button type="button" class="add-btn">Tambah</button>
+                                <div class="menu-price">
+                                    <span>Mulai dari</span>
+                                    <strong data-price-display>Rp 31.000</strong>
+                                </div>
+                                <button type="button" class="add-btn">Sesuaikan &amp; Tambah</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="menu-card" data-id="mango-sunrise" data-name="Mango Sunrise" data-price="27000" data-tags="seasonal,fruit" style="--delay: .65s;">
+                    <article class="menu-card" data-id="mango-sunrise" data-name="Mango Sunrise" data-price="27000" data-tags="seasonal,fruit" data-ice-options="Normal Ice|Less Ice|No Ice" data-sweetness-options="Normal Sugar|Less Sugar|Half Sugar" data-topping-options="Tanpa Tambahan|Popping Boba|Nata de Coco|Aloe Vera" data-default-ice="Normal Ice" data-default-sweetness="Normal Sugar" data-default-topping="Tanpa Tambahan" data-image="Images/Strawberry.webp" style="--delay: .65s;">
                         <div class="menu-image">
-                            <img src="Images/Strawberry.webp" alt="Mango Sunrise">
+                            <img src="Images/Mango.webp" alt="Mango Sunrise">
                         </div>
                         <div class="menu-info">
                             <div class="menu-info-header">
@@ -380,43 +262,22 @@
                                 <span class="menu-volume">450 ml</span>
                             </div>
                             <p>Lapisan mango puree, jasmine tea, dan popping boba tropical yang bikin mood naik.</p>
-                            <div class="menu-options">
-                                <label>
-                                    <span>Level Es</span>
-                                    <select name="ice">
-                                        <option value="Normal Ice" selected>Normal Ice</option>
-                                        <option value="Less Ice">Less Ice</option>
-                                        <option value="No Ice">No Ice</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Kemanisan</span>
-                                    <select name="sweetness">
-                                        <option value="Normal Sugar" selected>Normal Sugar</option>
-                                        <option value="Less Sugar">Less Sugar</option>
-                                        <option value="Half Sugar">Half Sugar</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Topping</span>
-                                    <select name="topping">
-                                        <option value="Tanpa Tambahan" selected>Tanpa Tambahan</option>
-                                        <option value="Popping Boba">Popping Boba</option>
-                                        <option value="Nata de Coco">Nata de Coco</option>
-                                        <option value="Aloe Vera">Aloe Vera</option>
-                                    </select>
-                                </label>
+                            <div class="menu-flags" data-taglist></div>
+                            <div class="menu-attributes" aria-label="Kustomisasi tersedia">
                             </div>
                             <div class="menu-meta">
-                                <span class="price" data-price-display>Rp 27.000</span>
-                                <button type="button" class="add-btn">Tambah</button>
+                                <div class="menu-price">
+                                    <span>Mulai dari</span>
+                                    <strong data-price-display>Rp 27.000</strong>
+                                </div>
+                                <button type="button" class="add-btn">Sesuaikan &amp; Tambah</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="menu-card" data-id="lychee-yakult" data-name="Lychee Yakult Fizz" data-price="26000" data-tags="seasonal,tea" style="--delay: .7s;">
+                    <article class="menu-card" data-id="lychee-yakult" data-name="Lychee Yakult Fizz" data-price="26000" data-tags="seasonal,tea" data-ice-options="Normal Ice|Less Ice|No Ice" data-sweetness-options="Normal Sugar|Less Sugar|Half Sugar" data-topping-options="Tanpa Tambahan|Lychee Jelly|Basil Seed|Citrus Peel" data-default-ice="Normal Ice" data-default-sweetness="Normal Sugar" data-default-topping="Tanpa Tambahan" data-image="Images/GreenMilk.webp" style="--delay: .7s;">
                         <div class="menu-image">
-                            <img src="Images/GreenMilk.webp" alt="Lychee Yakult Fizz">
+                            <img src="Images/Lychee.webp" alt="Lychee Yakult Fizz">
                         </div>
                         <div class="menu-info">
                             <div class="menu-info-header">
@@ -424,43 +285,22 @@
                                 <span class="menu-volume">400 ml</span>
                             </div>
                             <p>Kombinasi yakult, lychee segar, dan soda ringan untuk sensasi sparkling yang playful.</p>
-                            <div class="menu-options">
-                                <label>
-                                    <span>Level Es</span>
-                                    <select name="ice">
-                                        <option value="Normal Ice" selected>Normal Ice</option>
-                                        <option value="Less Ice">Less Ice</option>
-                                        <option value="No Ice">No Ice</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Kemanisan</span>
-                                    <select name="sweetness">
-                                        <option value="Normal Sugar" selected>Normal Sugar</option>
-                                        <option value="Less Sugar">Less Sugar</option>
-                                        <option value="Half Sugar">Half Sugar</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Topping</span>
-                                    <select name="topping">
-                                        <option value="Tanpa Tambahan" selected>Tanpa Tambahan</option>
-                                        <option value="Lychee Jelly">Lychee Jelly</option>
-                                        <option value="Basil Seed">Basil Seed</option>
-                                        <option value="Citrus Peel">Citrus Peel</option>
-                                    </select>
-                                </label>
+                            <div class="menu-flags" data-taglist></div>
+                            <div class="menu-attributes" aria-label="Kustomisasi tersedia">
                             </div>
                             <div class="menu-meta">
-                                <span class="price" data-price-display>Rp 26.000</span>
-                                <button type="button" class="add-btn">Tambah</button>
+                                <div class="menu-price">
+                                    <span>Mulai dari</span>
+                                    <strong data-price-display>Rp 26.000</strong>
+                                </div>
+                                <button type="button" class="add-btn">Sesuaikan &amp; Tambah</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="menu-card" data-id="taro-velvet" data-name="Taro Velvet" data-price="29000" data-tags="signature,creamy" style="--delay: .75s;">
+                    <article class="menu-card" data-id="taro-velvet" data-name="Taro Velvet" data-price="29000" data-tags="signature,creamy" data-ice-options="Normal Ice|Less Ice|No Ice" data-sweetness-options="Normal Sugar|Less Sugar|Half Sugar" data-topping-options="Tanpa Tambahan|Cheese Foam|Coconut Jelly|Oreo Crumble" data-default-ice="Normal Ice" data-default-sweetness="Normal Sugar" data-default-topping="Tanpa Tambahan" data-image="Images/BrownSugar.webp" style="--delay: .75s;">
                         <div class="menu-image">
-                            <img src="Images/BrownSugar.webp" alt="Taro Velvet">
+                            <img src="Images/Taro.webp" alt="Taro Velvet">
                         </div>
                         <div class="menu-info">
                             <div class="menu-info-header">
@@ -468,36 +308,15 @@
                                 <span class="menu-volume">500 ml</span>
                             </div>
                             <p>Krim taro lembut dengan ekstra cheese foam gurih dan taburan crumble vanilla.</p>
-                            <div class="menu-options">
-                                <label>
-                                    <span>Level Es</span>
-                                    <select name="ice">
-                                        <option value="Normal Ice" selected>Normal Ice</option>
-                                        <option value="Less Ice">Less Ice</option>
-                                        <option value="No Ice">No Ice</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Kemanisan</span>
-                                    <select name="sweetness">
-                                        <option value="Normal Sugar" selected>Normal Sugar</option>
-                                        <option value="Less Sugar">Less Sugar</option>
-                                        <option value="Half Sugar">Half Sugar</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    <span>Topping</span>
-                                    <select name="topping">
-                                        <option value="Tanpa Tambahan" selected>Tanpa Tambahan</option>
-                                        <option value="Cheese Foam">Cheese Foam</option>
-                                        <option value="Coconut Jelly">Coconut Jelly</option>
-                                        <option value="Oreo Crumble">Oreo Crumble</option>
-                                    </select>
-                                </label>
+                            <div class="menu-flags" data-taglist></div>
+                            <div class="menu-attributes" aria-label="Kustomisasi tersedia">
                             </div>
                             <div class="menu-meta">
-                                <span class="price" data-price-display>Rp 29.000</span>
-                                <button type="button" class="add-btn">Tambah</button>
+                                <div class="menu-price">
+                                    <span>Mulai dari</span>
+                                    <strong data-price-display>Rp 29.000</strong>
+                                </div>
+                                <button type="button" class="add-btn">Sesuaikan &amp; Tambah</button>
                             </div>
                         </div>
                     </article>
@@ -545,6 +364,153 @@
             </aside>
         </div>
     </main>
+
+    <div class="modal customize-modal" id="customize-modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+        <div class="modal-dialog">
+            <button type="button" class="modal-close" data-close-modal aria-label="Tutup dialog">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-content">
+                <header class="modal-header">
+                    <span class="modal-eyebrow">Sesuaikan Pesanan</span>
+                    <h3 data-modal-title>Brown Sugar Milk</h3>
+                    <p data-modal-description></p>
+                </header>
+                <div class="modal-product">
+                    <div class="modal-product-media">
+                        <img src="" alt="" data-modal-image loading="lazy">
+                    </div>
+                    <div class="modal-product-info">
+                        <span class="modal-volume" data-modal-volume></span>
+                        <span class="modal-base-label">Harga dasar</span>
+                        <strong class="modal-base-price" data-modal-price>Rp 0</strong>
+                    </div>
+                </div>
+                <div class="modal-options">
+                    <section class="option-group" data-option-section="ice">
+                        <div class="group-header">
+                            <h4>Level Es</h4>
+                            <span class="group-selection" data-selection-label="ice"></span>
+                        </div>
+                        <div class="option-pills" data-option-group="ice"></div>
+                    </section>
+                    <section class="option-group" data-option-section="sweetness">
+                        <div class="group-header">
+                            <h4>Kemanisan</h4>
+                            <span class="group-selection" data-selection-label="sweetness"></span>
+                        </div>
+                        <div class="option-pills" data-option-group="sweetness"></div>
+                    </section>
+                    <section class="option-group" data-option-section="topping">
+                        <div class="group-header">
+                            <h4>Topping</h4>
+                            <span class="group-selection" data-selection-label="topping"></span>
+                        </div>
+                        <div class="option-pills" data-option-group="topping"></div>
+                    </section>
+                </div>
+                <div class="modal-quantity">
+                    <span>Jumlah</span>
+                    <div class="quantity-stepper" aria-label="Atur jumlah pesanan">
+                        <button type="button" data-quantity-action="decrease" aria-label="Kurangi jumlah">−</button>
+                        <span data-quantity-value>1</span>
+                        <button type="button" data-quantity-action="increase" aria-label="Tambah jumlah">+</button>
+                    </div>
+                </div>
+                <footer class="modal-footer">
+                    <div class="modal-total">
+                        <span>Total sementara</span>
+                        <strong data-modal-total>Rp 0</strong>
+                    </div>
+                    <button type="button" class="btn primary" data-action="add-to-cart">Masukkan ke Keranjang</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal checkout-modal" id="checkout-modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+        <div class="modal-dialog">
+            <button type="button" class="modal-close" data-close-modal aria-label="Tutup dialog">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-content">
+                <header class="modal-header">
+                    <span class="modal-eyebrow">Konfirmasi Pesanan</span>
+                    <h3>Checkout</h3>
+                    <p>Periksa ulang pesananmu sebelum memilih metode pembayaran.</p>
+                </header>
+                <div class="checkout-summary" aria-live="polite">
+                    <ul class="checkout-items" data-checkout-summary></ul>
+                    <p class="checkout-promo" data-checkout-promo hidden></p>
+                    <div class="checkout-totals">
+                        <div class="summary-line">
+                            <span>Subtotal</span>
+                            <span data-checkout-subtotal>Rp 0</span>
+                        </div>
+                        <div class="summary-line" data-checkout-discount-row hidden>
+                            <span>Promo</span>
+                            <span data-checkout-discount>-Rp 0</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Biaya Pengiriman</span>
+                            <span data-checkout-shipping>Rp 0</span>
+                        </div>
+                        <div class="summary-line total">
+                            <span>Total</span>
+                            <span data-checkout-total>Rp 0</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="payment-form">
+                    <fieldset class="payment-methods">
+                        <legend>Pilih metode pembayaran</legend>
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="qris" checked>
+                            <span class="option-title">QRIS</span>
+                            <span class="option-desc">Bayar instan dengan scan kode QR.</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="transfer">
+                            <span class="option-title">Transfer BCA</span>
+                            <span class="option-desc">Transfer ke rekening resmi The Boba Lab.</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment-method" value="cod">
+                            <span class="option-title">COD / Pickup</span>
+                            <span class="option-desc">Bayar saat pesanan diantar atau diambil.</span>
+                        </label>
+                    </fieldset>
+                </form>
+                <div class="payment-details">
+                    <div class="payment-info" data-method="qris">
+                        <div class="payment-preview qris-preview">
+                            <span>QRIS Placeholder</span>
+                        </div>
+                        <p>Scan kode QR menggunakan aplikasi pembayaran favoritmu.</p>
+                    </div>
+                    <div class="payment-info" data-method="transfer" hidden>
+                        <div class="payment-preview bank-preview">
+                            <span class="bank-name">BCA</span>
+                            <strong class="bank-number">123 456 7890</strong>
+                            <span class="bank-owner">a.n. The Boba Lab</span>
+                        </div>
+                        <p>Setelah transfer, kirim bukti pembayaran ke WhatsApp kami untuk proses lebih cepat.</p>
+                    </div>
+                    <div class="payment-info" data-method="cod" hidden>
+                        <p>Pembayaran dilakukan saat pesanan diterima kurir atau ketika kamu mengambilnya di outlet.</p>
+                        <ul>
+                            <li>Siapkan uang pas atau gunakan QRIS di tempat.</li>
+                            <li>Untuk pickup, tunjukkan kode pesanan kepada barista kami.</li>
+                        </ul>
+                    </div>
+                </div>
+                <footer class="modal-footer">
+                    <button type="button" class="btn ghost" data-close-modal>Batal</button>
+                    <button type="button" class="btn primary" data-action="confirm-checkout">Konfirmasi Pesanan</button>
+                </footer>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2024 The Boba Lab. All rights reserved.</p>
