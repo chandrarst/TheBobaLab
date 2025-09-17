@@ -3268,151 +3268,143 @@ body.error-page {
     min-height: 100vh;
     margin: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    background: radial-gradient(circle at top, rgba(255, 240, 231, 0.9), #f7efe9 40%, #f1e2d8 100%);
-    color: #362417;
+    justify-content: center;
+    color: #34251a;
     font-family: 'Poppins', Arial, sans-serif;
     text-align: center;
-    padding: 48px 16px 32px;
+    padding: 48px 16px;
+    background-color: #120c08;
+    position: relative;
+    overflow: hidden;
 }
 
-.error-header {
-    width: 100%;
-    max-width: 960px;
-    display: flex;
-    justify-content: center;
+body.error-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('Images/banner2.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.6) blur(4px);
+    transform: scale(1.05);
+    z-index: -1;
+    pointer-events: none;
 }
 
-.error-brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    text-decoration: none;
-    color: inherit;
-}
+.error-wrapper {
+    background: rgba(255, 255, 255, 0.64);
+    backdrop-filter: blur(18px);
+    border-radius: 28px;
+    padding: clamp(32px, 8vw, 56px) clamp(24px, 6vw, 64px);
+    max-width: 520px;
+    width: min(100%, 520px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.15),
+        0 32px 70px rgba(90, 58, 37, 0.18);
 
-.error-brand-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.error-brand-name {
-    font-family: 'Playfair Display', 'Times New Roman', serif;
-    font-size: 1.5rem;
-    letter-spacing: 0.5px;
-}
-
-.error-brand-tagline {
-    font-size: 0.9rem;
-    color: rgba(54, 36, 23, 0.72);
-}
-
-.error-logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    box-shadow: 0 12px 30px rgba(106, 78, 57, 0.25);
-    animation: spin-boba 6s ease-in-out infinite;
-}
-
-@keyframes spin-boba {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-    45% {
-        transform: rotate(8deg) scale(1.03);
-    }
-    55% {
-        transform: rotate(-8deg) scale(1.03);
-    }
-    100% {
-        transform: rotate(0deg) scale(1);
-    }
-}
-
-.error-content {
-    flex: 1;
-    width: 100%;
-    max-width: 640px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
-    padding: 32px 16px;
+    gap: clamp(16px, 4vw, 24px);
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.error-code,
+.error-wrapper h1,
+.error-description,
+.error-hint,
+.error-action {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+}
+
+.error-code { animation-delay: 0.2s; }
+.error-wrapper h1 { animation-delay: 0.4s; }
+.error-description { animation-delay: 0.6s; }
+.error-hint { animation-delay: 0.8s; }
+.error-action { animation-delay: 1s; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .error-code {
-    font-size: clamp(5rem, 12vw, 8rem);
+    font-size: clamp(5rem, 12vw, 7.5rem);
     font-family: 'Playfair Display', 'Times New Roman', serif;
-    line-height: 1;
     margin: 0;
-    background: linear-gradient(135deg, #c07f45, #6a4e39 60%);
+    letter-spacing: 6px;
+    background: linear-gradient(135deg, rgba(106, 78, 57, 0.95), rgba(160, 113, 75, 0.75));
     -webkit-background-clip: text;
     color: transparent;
-    text-shadow: 0 10px 25px rgba(106, 78, 57, 0.2);
 }
 
-.error-content h1 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+.error-wrapper h1 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-family: 'Playfair Display', 'Times New Roman', serif;
     margin: 0;
-    color: #5a3a25;
+    color: #3f2c1f;
 }
 
-.error-message,
-.error-suggestion {
-    max-width: 520px;
-    font-size: 1.05rem;
-    color: rgba(54, 36, 23, 0.85);
-    line-height: 1.6;
+.error-description,
+.error-hint {
     margin: 0;
+    font-size: clamp(1rem, 2.6vw, 1.1rem);
+    color: rgba(52, 37, 26, 0.9);
+    line-height: 1.7;
+    max-width: 420px;
 }
 
-.error-suggestion {
-    font-weight: 600;
+.error-hint {
+    font-weight: 500;
 }
 
-body.error-page .btn.primary {
+.error-action {
     margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     padding: 12px 28px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #6a4e39, #af8b65);
+    color: #fff;
+    font-weight: 600;
     font-size: 1rem;
-    box-shadow: 0 18px 35px rgba(192, 127, 69, 0.35);
+    text-decoration: none;
+    box-shadow: 0 20px 40px rgba(106, 78, 57, 0.28);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.error-footer {
-    width: 100%;
-    max-width: 960px;
-    font-size: 0.9rem;
-    color: rgba(54, 36, 23, 0.65);
+.error-action::after {
+    content: '\2192';
+    font-size: 1.2rem;
+}
+
+.error-action:hover,
+.error-action:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 26px 50px rgba(106, 78, 57, 0.32);
+}
+
+.error-action:focus-visible {
+    outline: 2px solid #af8b65;
+    outline-offset: 3px;
 }
 
 @media (max-width: 600px) {
     body.error-page {
-        padding-top: 40px;
+        padding: 32px 16px;
     }
 
-    .error-logo {
-        width: 68px;
-        height: 68px;
-    }
-
-    .error-brand-name {
-        font-size: 1.3rem;
-    }
-
-    .error-brand-tagline {
-        font-size: 0.85rem;
-    }
-
-    .error-content {
-        padding: 24px 12px 32px;
-    }
-
-    .error-message,
-    .error-suggestion {
-        font-size: 1rem;
+    .error-wrapper {
+        padding: 32px 24px;
     }
 }
