@@ -3271,11 +3271,9 @@ body.error-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #34251a;
     font-family: 'Poppins', Arial, sans-serif;
     text-align: center;
     padding: 48px 16px;
-    background-color: #120c08;
     position: relative;
     overflow: hidden;
 }
