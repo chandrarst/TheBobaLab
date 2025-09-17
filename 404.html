@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Tidak Ditemukan | The Boba Lab</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="Images/Icon.ico">
+    <meta name="robots" content="noindex">
+</head>
+<body class="error-page">
+    <div class="error-wrapper">
+        <header class="error-header">
+            <a href="index.html" class="error-brand" aria-label="Kembali ke beranda The Boba Lab">
+                <img src="Images/Logo.webp" alt="Logo The Boba Lab" class="error-logo" loading="lazy">
+                <span class="error-brand-text">
+                    <span class="error-brand-name">The Boba Lab</span>
+                    <span class="error-brand-tagline">Lab Crafted Bubble Tea</span>
+                </span>
+            </a>
+        </header>
+
+        <main class="error-content" role="main">
+            <p class="error-code" aria-hidden="true">404</p>
+            <h1>Halaman Tidak Ditemukan</h1>
+            <p class="error-message">Eksperimen yang kamu tuju belum kami rilis atau mungkin sudah dipindahkan ke rak rahasia.</p>
+            <p class="error-note">Silakan kembali ke laboratorium utama atau hubungi kami bila butuh bantuan meracik rasa favoritmu.</p>
+            <div class="error-actions">
+                <a href="index.html" class="btn primary">Kembali ke Beranda</a>
+                <a href="contact.html" class="btn ghost">Hubungi Tim Kami</a>
+            </div>
+        </main>
+
+        <footer class="error-footer">
+            <p>© <span id="current-year"></span> The Boba Lab. Terus bereksperimen dengan rasa terbaik.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

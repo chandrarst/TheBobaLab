@@ -3263,3 +3263,147 @@ footer {
     }
 
 }
+/* 404 Error Page */
+body.error-page {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top, rgba(253, 249, 246, 0.9), rgba(247, 214, 185, 0.35));
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    padding: 48px 16px;
+}
+
+.error-wrapper {
+    width: min(680px, 100%);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+    border-radius: 32px;
+    padding: clamp(32px, 6vw, 56px);
+    box-shadow: 0 32px 68px rgba(106, 78, 57, 0.18);
+    border: 1px solid rgba(106, 78, 57, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 6vw, 40px);
+    text-align: center;
+}
+
+.error-header {
+    display: flex;
+    justify-content: center;
+}
+
+.error-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.error-logo {
+    width: clamp(60px, 10vw, 80px);
+    height: clamp(60px, 10vw, 80px);
+    border-radius: 50%;
+    box-shadow: 0 18px 36px rgba(106, 78, 57, 0.25);
+}
+
+.error-brand-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.error-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 3.2vw, 1.6rem);
+    letter-spacing: 0.6px;
+    color: var(--primary-color);
+}
+
+.error-brand-tagline {
+    font-size: 0.9rem;
+    color: rgba(54, 36, 23, 0.7);
+}
+
+.error-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.error-code {
+    font-size: clamp(4.5rem, 12vw, 7rem);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 6px;
+    margin: 0;
+    background: linear-gradient(135deg, rgba(192, 127, 69, 0.95), rgba(106, 78, 57, 0.92));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.error-content h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: #5a3a25;
+}
+
+.error-message {
+    max-width: 480px;
+    margin: 0;
+    font-size: 1.05rem;
+    color: rgba(54, 36, 23, 0.78);
+}
+
+.error-note {
+    margin: 0;
+    font-size: 0.95rem;
+    color: rgba(54, 36, 23, 0.6);
+}
+
+.error-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+body.error-page .btn.primary {
+    padding: 12px 28px;
+    font-size: 1rem;
+    box-shadow: 0 20px 32px rgba(106, 78, 57, 0.28);
+}
+
+body.error-page .btn.ghost {
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-color: rgba(106, 78, 57, 0.2);
+    color: var(--primary-color);
+}
+
+.error-footer {
+    font-size: 0.85rem;
+    color: rgba(54, 36, 23, 0.6);
+}
+
+@media (max-width: 640px) {
+    body.error-page {
+        padding: 32px 16px;
+    }
+
+    .error-wrapper {
+        border-radius: 26px;
+        padding: 28px 24px;
+    }
+
+    .error-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

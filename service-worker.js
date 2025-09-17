@@ -5,6 +5,7 @@ const OFFLINE_ASSETS = [
     './about.html',
     './contact.html',
     './order.html',
+    './404.html',
     './style.css',
     './script.js',
     './Images/AboutUs.webp',
