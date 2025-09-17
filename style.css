@@ -3270,11 +3270,27 @@ body.error-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f6eee7 0%, #f0dfce 52%, #f8f2ec 100%);
     color: #34251a;
     font-family: 'Poppins', Arial, sans-serif;
     text-align: center;
     padding: 48px 16px;
+    background-color: #120c08;
+    position: relative;
+    overflow: hidden;
+}
+
+body.error-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(135deg, rgba(10, 6, 4, 0.85), rgba(36, 22, 14, 0.6)), url('Images/banner2.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.6) blur(2px);
+    transform: scale(1.05);
+    z-index: -1;
+    pointer-events: none;
 }
 
 .error-wrapper {
