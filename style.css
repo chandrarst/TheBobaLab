@@ -3283,11 +3283,11 @@ body.error-page::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: linear-gradient(135deg, rgba(10, 6, 4, 0.85), rgba(36, 22, 14, 0.6)), url('Images/banner2.webp');
+    background-image: url('Images/banner2.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: brightness(0.6) blur(2px);
+    filter: brightness(0.6) blur(4px);
     transform: scale(1.05);
     z-index: -1;
     pointer-events: none;
@@ -3298,13 +3298,43 @@ body.error-page::before {
     backdrop-filter: blur(18px);
     border-radius: 28px;
     padding: clamp(32px, 8vw, 56px) clamp(24px, 6vw, 64px);
-    box-shadow: 0 32px 70px rgba(90, 58, 37, 0.18);
     max-width: 520px;
     width: min(100%, 520px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.15),
+        0 32px 70px rgba(90, 58, 37, 0.18);
+
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: clamp(16px, 4vw, 24px);
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.error-code,
+.error-wrapper h1,
+.error-description,
+.error-hint,
+.error-action {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+}
+
+.error-code { animation-delay: 0.2s; }
+.error-wrapper h1 { animation-delay: 0.4s; }
+.error-description { animation-delay: 0.6s; }
+.error-hint { animation-delay: 0.8s; }
+.error-action { animation-delay: 1s; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .error-code {
@@ -3328,7 +3358,7 @@ body.error-page::before {
 .error-hint {
     margin: 0;
     font-size: clamp(1rem, 2.6vw, 1.1rem);
-    color: rgba(52, 37, 26, 0.82);
+    color: rgba(52, 37, 26, 0.9);
     line-height: 1.7;
     max-width: 420px;
 }
@@ -3362,6 +3392,11 @@ body.error-page::before {
 .error-action:focus-visible {
     transform: translateY(-2px);
     box-shadow: 0 26px 50px rgba(106, 78, 57, 0.32);
+}
+
+.error-action:focus-visible {
+    outline: 2px solid #af8b65;
+    outline-offset: 3px;
 }
 
 @media (max-width: 600px) {
