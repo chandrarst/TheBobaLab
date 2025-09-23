@@ -85,6 +85,8 @@ body.loaded #loading-screen {
 #loading-screen .loading-logo img {
     width: 64px;
     height: 64px;
+    outline: 2px solid var(--primary-color);
+    border-radius: 8px;
 }
 
 #loading-screen .loading-animation {
