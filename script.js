@@ -1074,3 +1074,116 @@ document.addEventListener('DOMContentLoaded', () => {
 
     registerServiceWorker();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const img = document.getElementById("easterEgg");
+    const stepsTitle = document.getElementById("stepsTitle");
+    const step1Title = document.getElementById("step1Title");
+    const step1Text = document.getElementById("step1Text");
+    const step2Title = document.getElementById("step2Title");
+    const step2Text = document.getElementById("step2Text");
+    const step3Title = document.getElementById("step3Title");
+    const step3Text = document.getElementById("step3Text");
+    const overlay = document.getElementById("easterOverlay");
+    const overlaySymbol = overlay.querySelector(".easteregg-symbol");
+
+    let clickCount = 0;
+    let isFreya = false;
+
+    function animateBoba() {
+        let startTime = null;
+        const duration = 1800;
+        const boba = overlaySymbol;
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            const easeInOut = (t) =>
+                t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+            let rotation = 0;
+            let scale = 1;
+            let translateY = 0;
+            let opacity = 1;
+
+            if (progress <= 0.25) {
+                const fall = easeInOut(progress / 0.25);
+                translateY = -200 + 200 * fall;
+                scale = 0.8 + 0.4 * fall;
+            } else if (progress <= 0.4) {
+                const bounce = easeInOut((progress - 0.25) / 0.15);
+                translateY = -15 * (1 - bounce);
+                scale = 1.2 + 0.1 * bounce;
+            } else if (progress <= 0.85) {
+                const spin = easeInOut((progress - 0.4) / 0.45);
+                rotation = spin * 360;
+                scale = 1.3 + 0.15 * spin;
+            } else {
+                const fade = (progress - 0.85) / 0.15;
+                rotation = 360;
+                scale = 1.45 + 0.2 * fade;
+                opacity = 1 - fade;
+            }
+
+            boba.style.transform = `translateY(${translateY}px) scale(${scale}) rotate(${rotation}deg)`;
+            boba.style.opacity = opacity;
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                overlay.classList.remove("show");
+                overlaySymbol.style.display = "none";
+                setTimeout(() => {
+                    overlaySymbol.style.display = "";
+                    overlaySymbol.style.transform = "";
+                    overlaySymbol.style.opacity = "";
+                    overlaySymbol.className = "easteregg-symbol";
+                }, 600);
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    img.addEventListener("click", () => {
+        clickCount++;
+
+        if (clickCount === 3) {
+            if (!isFreya) {
+                overlaySymbol.textContent = "!";
+                overlaySymbol.className = "easteregg-symbol";
+                overlay.classList.add("show");
+
+                setTimeout(() => {
+                    img.src = "Images/Freya.png";
+                    stepsTitle.textContent = "Freya JKT48 Pernah Minum Boba Disini";
+                    step1Title.textContent = "Temukan Rasa Rahasia Freya";
+                    step1Text.textContent = "Resep boba spesial yang hanya muncul kalau kamu cukup sabar klik gambarnya tiga kali.";
+                    step2Title.textContent = "Eksperimen Bersama Idola";
+                    step2Text.textContent = "Freya ikut nentuin level manis, es, dan topping favoritnya—hasilnya jadi varian limited edition.";
+                    step3Title.textContent = "Nikmati di Lab Rasa";
+                    step3Text.textContent = "Setiap tegukan bikin kamu merasa kayak lagi duduk bareng Freya di pojokan Boba Lab.";
+                    isFreya = true;
+                    overlay.classList.remove("show");
+                }, 900);
+            } else {
+                overlaySymbol.textContent = "🧋";
+                overlay.classList.add("show");
+                animateBoba();
+                setTimeout(() => {
+                    img.src = "Images/AboutUs.webp";
+                    stepsTitle.textContent = "Pesan Dalam 3 Langkah Sederhana";
+                    step1Title.textContent = "Pilih Menu";
+                    step1Text.textContent = "Telusuri signature dan seasonal series kami. Setiap menu dilengkapi deskripsi dan rekomendasi pairing.";
+                    step2Title.textContent = "Atur Eksperimenmu";
+                    step2Text.textContent = "Tentukan tingkat manis, level es, hingga topping favorit. Sistem kami langsung menghitung total secara real time.";
+                    step3Title.textContent = "Nikmati Tanpa Menunggu";
+                    step3Text.textContent = "Kami siapkan minumanmu dalam hitungan menit dan kirim melalui kurir andalan kami.";
+                    isFreya = false;
+                }, 900);
+            }
+            clickCount = 0;
+        }
+    });
+});
