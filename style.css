@@ -318,8 +318,9 @@ body.loaded {
 }
 
 .brand-logo {
-    width: 42px;
+    width: 40px;
     height: auto;
+    border-radius: 12px;
 }
 
 .brand-text {
@@ -3273,7 +3274,6 @@ body.error-page {
     justify-content: center;
     font-family: 'Poppins', Arial, sans-serif;
     text-align: center;
-    padding: 48px 16px;
     position: relative;
     overflow: hidden;
 }
@@ -3282,7 +3282,7 @@ body.error-page::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: url('Images/banner2.webp');
+    background-image: url('Images/Banner2.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
