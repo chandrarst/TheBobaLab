@@ -3343,6 +3343,7 @@ body.error-page::before {
     letter-spacing: 6px;
     background: linear-gradient(135deg, rgba(106, 78, 57, 0.95), rgba(160, 113, 75, 0.75));
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
