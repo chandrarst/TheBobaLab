@@ -318,6 +318,107 @@ function showServiceWorkerUpdateBanner(onRefresh) {
 
 const modalCallbacks = new WeakMap();
 
+function getEasterEggElements() {
+    const overlay = document.getElementById('easterOverlay');
+    if (!overlay) {
+        return { overlay: null, symbol: null };
+    }
+
+    const symbol = overlay.querySelector('.easteregg-symbol');
+    return { overlay, symbol };
+}
+
+function playBobaAnimation(options = {}) {
+    const { overlayElement, symbolElement, duration = 1800, resetDelay = 600, symbolText = '🧋' } = options;
+    const { overlay: defaultOverlay, symbol: defaultSymbol } = getEasterEggElements();
+    const overlay = overlayElement || defaultOverlay;
+    const symbol = symbolElement || defaultSymbol;
+
+    return new Promise(resolve => {
+        if (!overlay || !symbol) {
+            resolve();
+            return;
+        }
+
+        const originalText = symbol.textContent;
+        const originalClass = symbol.className;
+        const originalDisplay = symbol.style.display;
+        const originalTransform = symbol.style.transform;
+        const originalOpacity = symbol.style.opacity;
+
+        if (typeof symbolText === 'string') {
+            symbol.textContent = symbolText;
+        }
+
+        overlay.classList.add('show');
+        overlay.setAttribute('aria-hidden', 'false');
+        symbol.style.display = originalDisplay || '';
+
+        let startTime = null;
+
+        const easeInOut = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+        const step = timestamp => {
+            if (!startTime) {
+                startTime = timestamp;
+            }
+
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            let rotation = 0;
+            let scale = 1;
+            let translateY = 0;
+            let opacity = 1;
+
+            if (progress <= 0.25) {
+                const fall = easeInOut(progress / 0.25);
+                translateY = -200 + 200 * fall;
+                scale = 0.8 + 0.4 * fall;
+            } else if (progress <= 0.4) {
+                const bounce = easeInOut((progress - 0.25) / 0.15);
+                translateY = -15 * (1 - bounce);
+                scale = 1.2 + 0.1 * bounce;
+            } else if (progress <= 0.85) {
+                const spin = easeInOut((progress - 0.4) / 0.45);
+                rotation = spin * 360;
+                scale = 1.3 + 0.15 * spin;
+            } else {
+                const fade = (progress - 0.85) / 0.15;
+                rotation = 360;
+                scale = 1.45 + 0.2 * fade;
+                opacity = 1 - fade;
+            }
+
+            symbol.style.transform = `translateY(${translateY}px) scale(${scale}) rotate(${rotation}deg)`;
+            symbol.style.opacity = opacity;
+
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                overlay.classList.remove('show');
+                overlay.setAttribute('aria-hidden', 'true');
+                symbol.style.display = 'none';
+
+                window.setTimeout(() => {
+                    symbol.style.display = originalDisplay || '';
+                    symbol.style.transform = originalTransform || '';
+                    symbol.style.opacity = originalOpacity || '';
+                    symbol.className = originalClass || 'easteregg-symbol';
+
+                    if (typeof symbolText === 'string') {
+                        symbol.textContent = originalText;
+                    }
+
+                    resolve();
+                }, resetDelay);
+            }
+        };
+
+        window.requestAnimationFrame(step);
+    });
+}
+
 function showToast(message) {
     const existing = document.querySelector('.toast');
     if (existing) {
@@ -462,6 +563,9 @@ function initOrderExperience() {
     const promoMessage = document.querySelector('.promo-message');
     const customizeModal = document.querySelector('#customize-modal');
     const checkoutModal = document.querySelector('#checkout-modal');
+    const cartPanel = document.querySelector('.cart-panel');
+    const cartFeedbackElement = document.querySelector('[data-cart-feedback]');
+    const successModal = document.querySelector('#order-success-modal');
 
     if (!menuCards.length || !cartItemsContainer || !cartCountElement || !subtotalElement || !shippingElement || !totalElement) {
         return;
@@ -492,6 +596,44 @@ function initOrderExperience() {
     };
     let currentCustomization = null;
     let selectedPaymentMethod = 'qris';
+    let cartFeedbackTimer = null;
+    let cartFeedbackHideTimer = null;
+    let cartHighlightTimer = null;
+
+    function announceCartUpdate(message) {
+        if (cartFeedbackElement) {
+            cartFeedbackElement.textContent = message;
+            cartFeedbackElement.hidden = false;
+            cartFeedbackElement.classList.add('is-visible');
+
+            if (cartFeedbackTimer) {
+                window.clearTimeout(cartFeedbackTimer);
+            }
+            if (cartFeedbackHideTimer) {
+                window.clearTimeout(cartFeedbackHideTimer);
+            }
+
+            cartFeedbackTimer = window.setTimeout(() => {
+                cartFeedbackElement.classList.remove('is-visible');
+                cartFeedbackHideTimer = window.setTimeout(() => {
+                    cartFeedbackElement.hidden = true;
+                    cartFeedbackElement.textContent = '';
+                }, 260);
+            }, 2400);
+        } else {
+            showToast(message);
+        }
+
+        if (cartPanel) {
+            cartPanel.classList.add('cart-panel--pulse');
+            if (cartHighlightTimer) {
+                window.clearTimeout(cartHighlightTimer);
+            }
+            cartHighlightTimer = window.setTimeout(() => {
+                cartPanel.classList.remove('cart-panel--pulse');
+            }, 600);
+        }
+    }
 
     const customizeElements = customizeModal ? {
         title: customizeModal.querySelector('[data-modal-title]'),
@@ -529,16 +671,28 @@ function initOrderExperience() {
         paymentInfos: checkoutModal.querySelectorAll('.payment-info')
     } : null;
 
+    const successElements = successModal ? {
+        orderId: successModal.querySelector('[data-success-order-id]'),
+        total: successModal.querySelector('[data-success-total]'),
+        method: successModal.querySelector('[data-success-method]'),
+        note: successModal.querySelector('[data-success-note]'),
+        backToMenu: successModal.querySelector('[data-action="back-to-menu"]')
+    } : null;
+
     attachModalDismiss(customizeModal, () => {
         currentCustomization = null;
     });
     attachModalDismiss(checkoutModal);
+    attachModalDismiss(successModal);
 
     if (customizeModal) {
         customizeModal.setAttribute('aria-hidden', 'true');
     }
     if (checkoutModal) {
         checkoutModal.setAttribute('aria-hidden', 'true');
+    }
+    if (successModal) {
+        successModal.setAttribute('aria-hidden', 'true');
     }
 
     const parseOptions = value => (value ? value.split('|').map(option => option.trim()).filter(Boolean) : []);
@@ -842,7 +996,7 @@ function initOrderExperience() {
         const data = getMenuData(card);
         if (!customizeModal || !customizeElements) {
             addItemToCart(data, data.defaults, 1);
-            showToast(`${data.name} ditambahkan ke keranjang.`);
+            announceCartUpdate(`${data.name} ditambahkan ke keranjang.`);
             return;
         }
 
@@ -890,7 +1044,7 @@ function initOrderExperience() {
                 }
                 addItemToCart(currentCustomization.data, currentCustomization.selected, currentCustomization.quantity);
                 closeModal(customizeModal);
-                showToast(`${currentCustomization.data.name} ditambahkan ke keranjang.`);
+                announceCartUpdate(`${currentCustomization.data.name} ditambahkan ke keranjang.`);
                 currentCustomization = null;
             });
         }
@@ -1019,11 +1173,54 @@ function initOrderExperience() {
             };
 
             const paymentNote = paymentMessages[selectedPaymentMethod] || 'Pesananmu sedang diproses.';
-            showToast(`Pesananmu sedang diproses. ${paymentNote}`);
+            const paymentLabels = {
+                qris: 'QRIS',
+                transfer: 'Transfer BCA',
+                cod: 'COD / Pickup'
+            };
+            const orderId = `TBL-${Math.floor(100000 + Math.random() * 900000)}`;
+            const totalDue = totals.total;
 
-            cart.length = 0;
-            updateCartUI();
+            checkoutElements.confirmButton.disabled = true;
             closeModal(checkoutModal);
+
+            const handleCompletion = () => {
+                cart.length = 0;
+                updateCartUI();
+
+                if (successModal && successElements) {
+                    if (successElements.orderId) {
+                        successElements.orderId.textContent = orderId;
+                    }
+                    if (successElements.total) {
+                        successElements.total.textContent = formatCurrency(totalDue);
+                    }
+                    if (successElements.method) {
+                        successElements.method.textContent = paymentLabels[selectedPaymentMethod] || 'Metode Lain';
+                    }
+                    if (successElements.note) {
+                        successElements.note.textContent = `Pesananmu sedang kami proses. ${paymentNote}`;
+                    }
+
+                    openModal(successModal);
+                } else {
+                    showToast(`Pesananmu sedang diproses. ${paymentNote}`);
+                }
+
+                checkoutElements.confirmButton.disabled = false;
+            };
+
+            playBobaAnimation().then(handleCompletion);
+        });
+    }
+
+    if (successElements && successElements.backToMenu) {
+        successElements.backToMenu.addEventListener('click', () => {
+            closeModal(successModal);
+            const menuPanelElement = document.querySelector('.menu-panel');
+            if (menuPanelElement) {
+                menuPanelElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     }
 
@@ -1202,67 +1399,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const step2Text = document.getElementById("step2Text");
     const step3Title = document.getElementById("step3Title");
     const step3Text = document.getElementById("step3Text");
-    const overlay = document.getElementById("easterOverlay");
-    const overlaySymbol = overlay.querySelector(".easteregg-symbol");
+    const { overlay, symbol: overlaySymbol } = getEasterEggElements();
+
+    if (!img || !overlay || !overlaySymbol || !stepsTitle || !step1Title || !step2Title || !step3Title || !step1Text || !step2Text || !step3Text) {
+        return;
+    }
 
     let clickCount = 0;
     let isFreya = false;
-
-    function animateBoba() {
-        let startTime = null;
-        const duration = 1800;
-        const boba = overlaySymbol;
-
-        function step(timestamp) {
-            if (!startTime) startTime = timestamp;
-            const elapsed = timestamp - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            const easeInOut = (t) =>
-                t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-            let rotation = 0;
-            let scale = 1;
-            let translateY = 0;
-            let opacity = 1;
-
-            if (progress <= 0.25) {
-                const fall = easeInOut(progress / 0.25);
-                translateY = -200 + 200 * fall;
-                scale = 0.8 + 0.4 * fall;
-            } else if (progress <= 0.4) {
-                const bounce = easeInOut((progress - 0.25) / 0.15);
-                translateY = -15 * (1 - bounce);
-                scale = 1.2 + 0.1 * bounce;
-            } else if (progress <= 0.85) {
-                const spin = easeInOut((progress - 0.4) / 0.45);
-                rotation = spin * 360;
-                scale = 1.3 + 0.15 * spin;
-            } else {
-                const fade = (progress - 0.85) / 0.15;
-                rotation = 360;
-                scale = 1.45 + 0.2 * fade;
-                opacity = 1 - fade;
-            }
-
-            boba.style.transform = `translateY(${translateY}px) scale(${scale}) rotate(${rotation}deg)`;
-            boba.style.opacity = opacity;
-
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            } else {
-                overlay.classList.remove("show");
-                overlaySymbol.style.display = "none";
-                setTimeout(() => {
-                    overlaySymbol.style.display = "";
-                    overlaySymbol.style.transform = "";
-                    overlaySymbol.style.opacity = "";
-                    overlaySymbol.className = "easteregg-symbol";
-                }, 600);
-            }
-        }
-        requestAnimationFrame(step);
-    }
 
     img.addEventListener("click", () => {
         clickCount++;
@@ -1286,10 +1430,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     overlay.classList.remove("show");
                 }, 900);
             } else {
-                overlaySymbol.textContent = "🧋";
-                overlay.classList.add("show");
-                animateBoba();
-                setTimeout(() => {
+                playBobaAnimation({ overlayElement: overlay, symbolElement: overlaySymbol, symbolText: "🧋" });
+                window.setTimeout(() => {
                     img.src = "Images/AboutUs.webp";
                     stepsTitle.textContent = "Pesan Dalam 3 Langkah Sederhana";
                     step1Title.textContent = "Pilih Menu";

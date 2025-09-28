@@ -364,6 +364,7 @@
                     </form>
                 </div>
                 <div class="cart-summary">
+                    <div class="cart-feedback" data-cart-feedback role="status" aria-live="polite" hidden></div>
                     <div class="summary-row">
                         <span>Subtotal</span>
                         <span data-subtotal>Rp 0</span>
@@ -386,6 +387,10 @@
             </aside>
         </div>
     </main>
+
+    <div id="easterOverlay" class="easteregg-overlay" aria-hidden="true">
+        <div class="easteregg-symbol">!</div>
+    </div>
 
     <div class="modal customize-modal" id="customize-modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
         <div class="modal-dialog">
@@ -529,6 +534,43 @@
                 <footer class="modal-footer">
                     <button type="button" class="btn ghost" data-close-modal>Batal</button>
                     <button type="button" class="btn primary" data-action="confirm-checkout">Konfirmasi Pesanan</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal success-modal" id="order-success-modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+        <div class="modal-dialog">
+            <button type="button" class="modal-close" data-close-modal aria-label="Tutup dialog">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-content">
+                <header class="modal-header">
+                    <span class="modal-eyebrow">Terima Kasih</span>
+                    <h3>Pesanan Berhasil Dibuat</h3>
+                    <p>Tim kami sedang mempersiapkan minuman terbaikmu.</p>
+                </header>
+                <div class="success-body">
+                    <div class="success-icon" aria-hidden="true">🧋</div>
+                    <ul class="success-summary">
+                        <li>
+                            <span>Nomor Pesanan</span>
+                            <strong data-success-order-id>TBL-000000</strong>
+                        </li>
+                        <li>
+                            <span>Total Pembayaran</span>
+                            <strong data-success-total>Rp 0</strong>
+                        </li>
+                        <li>
+                            <span>Metode Pembayaran</span>
+                            <strong data-success-method>QRIS</strong>
+                        </li>
+                    </ul>
+                    <p class="success-note" data-success-note>Pesananmu sedang kami proses.</p>
+                </div>
+                <footer class="modal-footer">
+                    <button type="button" class="btn ghost" data-action="back-to-menu">Lihat Menu Lagi</button>
+                    <button type="button" class="btn primary" data-close-modal data-action="close-success">Siap, Terima Kasih!</button>
                 </footer>
             </div>
         </div>
