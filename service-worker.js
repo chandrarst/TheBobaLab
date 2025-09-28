@@ -26,9 +26,12 @@ const OFFLINE_ASSETS = [
 ];
 
 self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => cache.addAll(OFFLINE_ASSETS))
-    );
+    event.waitUntil((async () => {
+        const cache = await caches.open(CACHE_NAME);
+        await cache.addAll(
+            OFFLINE_ASSETS.map(asset => new Request(asset, { cache: 'reload' }))
+        );
+    })());
     self.skipWaiting();
 });
 
@@ -44,6 +47,36 @@ self.addEventListener('activate', event => {
     self.clients.claim();
 });
 
+async function staleWhileRevalidate(event) {
+    const cache = await caches.open(CACHE_NAME);
+    const cachedResponse = await cache.match(event.request);
+
+    const fetchPromise = fetch(event.request)
+        .then(networkResponse => {
+            if (
+                networkResponse &&
+                networkResponse.status === 200 &&
+                networkResponse.type !== 'opaque'
+            ) {
+                cache.put(event.request, networkResponse.clone());
+            }
+            return networkResponse;
+        })
+        .catch(() => null);
+
+    if (cachedResponse) {
+        event.waitUntil(fetchPromise);
+        return cachedResponse;
+    }
+
+    const networkResponse = await fetchPromise;
+    if (networkResponse) {
+        return networkResponse;
+    }
+
+    throw new Error('Network request failed and no cache entry found.');
+}
+
 self.addEventListener('fetch', event => {
     if (event.request.method !== 'GET') {
         return;
@@ -55,29 +88,24 @@ self.addEventListener('fetch', event => {
         return;
     }
 
-    event.respondWith(
-        caches.match(event.request).then(cachedResponse => {
-            if (cachedResponse) {
-                return cachedResponse;
+    if (event.request.mode === 'navigate') {
+        event.respondWith((async () => {
+            try {
+                const networkResponse = await fetch(event.request);
+                const cache = await caches.open(CACHE_NAME);
+                cache.put(event.request, networkResponse.clone());
+                return networkResponse;
+            } catch (error) {
+                const cachedResponse = await caches.match(event.request);
+                if (cachedResponse) {
+                    return cachedResponse;
+                }
+
+                return caches.match('./index.html');
             }
+        })());
+        return;
+    }
 
-            return fetch(event.request)
-                .then(response => {
-                    if (!response || response.status !== 200 || response.type === 'opaque') {
-                        return response;
-                    }
-
-                    const clonedResponse = response.clone();
-                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, clonedResponse));
-                    return response;
-                })
-                .catch(error => {
-                    if (event.request.mode === 'navigate') {
-                        return caches.match('./index.html');
-                    }
-
-                    throw error;
-                });
-        })
-    );
+    event.respondWith(staleWhileRevalidate(event));
 });
