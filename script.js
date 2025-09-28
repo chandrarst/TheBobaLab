@@ -248,6 +248,74 @@ function highlightActiveNav() {
     });
 }
 
+let updateBannerElement = null;
+let teardownUpdateBannerHandler = null;
+
+function ensureUpdateBannerElement() {
+    if (updateBannerElement && document.body.contains(updateBannerElement)) {
+        return updateBannerElement;
+    }
+
+    const header = document.querySelector('.site-header');
+    if (!header) {
+        return null;
+    }
+
+    const banner = document.createElement('div');
+    banner.className = 'update-banner';
+    banner.setAttribute('role', 'status');
+    banner.setAttribute('aria-live', 'polite');
+    banner.innerHTML = `
+        <span class="update-banner__message">Versi baru tersedia, refresh untuk update.</span>
+        <button type="button" class="update-banner__action">Refresh</button>
+    `;
+
+    header.insertAdjacentElement('afterend', banner);
+    updateBannerElement = banner;
+    return banner;
+}
+
+function showServiceWorkerUpdateBanner(onRefresh) {
+    const banner = ensureUpdateBannerElement();
+
+    if (!banner) {
+        if (typeof onRefresh === 'function') {
+            onRefresh();
+        }
+        return;
+    }
+
+    banner.classList.remove('is-pending');
+
+    const actionButton = banner.querySelector('.update-banner__action');
+    if (!actionButton) {
+        return;
+    }
+
+    actionButton.disabled = false;
+    actionButton.textContent = 'Refresh';
+
+    if (typeof teardownUpdateBannerHandler === 'function') {
+        teardownUpdateBannerHandler();
+        teardownUpdateBannerHandler = null;
+    }
+
+    const handleClick = () => {
+        banner.classList.add('is-pending');
+        actionButton.disabled = true;
+        actionButton.textContent = 'Memuat...';
+
+        if (typeof onRefresh === 'function') {
+            onRefresh();
+        } else {
+            window.location.reload();
+        }
+    };
+
+    actionButton.addEventListener('click', handleClick, { once: true });
+    teardownUpdateBannerHandler = () => actionButton.removeEventListener('click', handleClick);
+}
+
 const modalCallbacks = new WeakMap();
 
 function showToast(message) {
@@ -1052,7 +1120,57 @@ function registerServiceWorker() {
         return;
     }
 
-    navigator.serviceWorker.register('./service-worker.js').catch(error => {
+    let refreshing = false;
+
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (refreshing) {
+            return;
+        }
+
+        refreshing = true;
+        window.location.reload();
+    });
+
+    navigator.serviceWorker.register('./service-worker.js').then(registration => {
+        const promptUserToRefresh = () => {
+            if (!navigator.serviceWorker.controller) {
+                return;
+            }
+
+            showServiceWorkerUpdateBanner(() => {
+                const waitingWorker = registration.waiting || registration.installing;
+                if (waitingWorker) {
+                    waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+                } else {
+                    window.location.reload();
+                }
+            });
+        };
+
+        const trackInstalling = worker => {
+            if (!worker) {
+                return;
+            }
+
+            worker.addEventListener('statechange', () => {
+                if (worker.state === 'installed') {
+                    if (navigator.serviceWorker.controller) {
+                        promptUserToRefresh();
+                    }
+                }
+            });
+        };
+
+        if (registration.waiting && navigator.serviceWorker.controller) {
+            promptUserToRefresh();
+        }
+
+        trackInstalling(registration.installing);
+
+        registration.addEventListener('updatefound', () => {
+            trackInstalling(registration.installing);
+        });
+    }).catch(error => {
         console.warn('Service worker registration failed:', error);
     });
 }
